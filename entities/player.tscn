@@ -1,16 +1,66 @@
-[gd_scene load_steps=3 format=3 uid="uid://dq3k14ognqmkb"]
+[gd_scene load_steps=10 format=3 uid="uid://dq3k14ognqmkb"]
 
 [ext_resource type="Script" path="res://entities/player.gd" id="1_8tkdy"]
-[ext_resource type="Texture2D" uid="uid://bq83kxkrporup" path="res://assets/player.png" id="1_eye8y"]
+[ext_resource type="Texture2D" uid="uid://bhvyx8a2fceso" path="res://assets/playerwalk_sheet.png" id="2_mwaon"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nx7ag"]
+atlas = ExtResource("2_mwaon")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqctg"]
+atlas = ExtResource("2_mwaon")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2mtt"]
+atlas = ExtResource("2_mwaon")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pedkq"]
+atlas = ExtResource("2_mwaon")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04ho3"]
+atlas = ExtResource("2_mwaon")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w132k"]
+atlas = ExtResource("2_mwaon")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mlks1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nx7ag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqctg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2mtt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pedkq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04ho3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w132k")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_8tkdy")
 speed = 100
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-rotation = -1.5708
-texture = ExtResource("1_eye8y")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = -1.5708
+sprite_frames = SubResource("SpriteFrames_mlks1")
+animation = &"walk"

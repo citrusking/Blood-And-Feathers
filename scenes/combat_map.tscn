@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://e02jvyl6w3fx"]
+[gd_scene load_steps=3 format=3 uid="uid://e02jvyl6w3fx"]
 
 [ext_resource type="PackedScene" uid="uid://dq3k14ognqmkb" path="res://entities/player.tscn" id="1_mcpit"]
+[ext_resource type="PackedScene" uid="uid://bpoiq6agkq6a5" path="res://entities/pigeon.tscn" id="2_it0dj"]
 
 [node name="CombatMap" type="Node2D"]
 
@@ -12,3 +13,6 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("1_mcpit")]
 position = Vector2(557, 362)
+
+[node name="Pigeon" parent="." instance=ExtResource("2_it0dj")]
+position = Vector2(686, 363)
