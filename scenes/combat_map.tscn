@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://e02jvyl6w3fx"]
+
+[ext_resource type="PackedScene" uid="uid://dq3k14ognqmkb" path="res://entities/player.tscn" id="1_mcpit"]
+
+[node name="CombatMap" type="Node2D"]
+
+[node name="TempBackground" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.72, 0.61248, 0.4896, 1)
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." instance=ExtResource("1_mcpit")]
+position = Vector2(557, 362)

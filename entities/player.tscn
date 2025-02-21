@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq3k14ognqmkb"]
+
+[ext_resource type="Script" path="res://entities/player.gd" id="1_8tkdy"]
+[ext_resource type="Texture2D" uid="uid://bq83kxkrporup" path="res://assets/player.png" id="1_eye8y"]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_8tkdy")
+speed = 100
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+rotation = -1.5708
+texture = ExtResource("1_eye8y")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)
