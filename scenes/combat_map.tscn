@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://e02jvyl6w3fx"]
+[gd_scene load_steps=6 format=4 uid="uid://e02jvyl6w3fx"]
 
 [ext_resource type="Script" path="res://scenes/combat_map.gd" id="1_htq3j"]
 [ext_resource type="PackedScene" uid="uid://dq3k14ognqmkb" path="res://entities/player/player.tscn" id="1_mcpit"]
 [ext_resource type="PackedScene" uid="uid://bpoiq6agkq6a5" path="res://entities/enemies/Budgie/budgie.tscn" id="2_it0dj"]
 [ext_resource type="TileSet" uid="uid://cg04tr8xvut76" path="res://scenes/desert_tileset.tres" id="3_278q3"]
+[ext_resource type="PackedScene" uid="uid://l2bi7ue4fgk4" path="res://ui/hud.tscn" id="5_b8273"]
 
 [node name="CombatMap" type="Node2D"]
 script = ExtResource("1_htq3j")
@@ -28,5 +29,7 @@ tile_set = ExtResource("3_278q3")
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 autostart = true
 
-[connection signal="game_over" from="Player" to="." method="_on_game_over"]
+[node name="HUD" parent="." instance=ExtResource("5_b8273")]
+
+[connection signal="health_changed" from="Player" to="." method="_on_player_health_changed"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

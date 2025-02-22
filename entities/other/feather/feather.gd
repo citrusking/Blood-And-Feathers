@@ -1,15 +1,16 @@
-extends Node
-
-var player_hp : int = 3
-var feathers : int
-var night : int # this is the level, or wave, or whatever
+extends AnimatedSprite2D
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    pass # Replace with function body.
+    play("flymetothemoon")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
     pass
+
+
+func _on_area_2d_body_entered(body):
+    GameState.feathers = GameState.feathers + 1
+    queue_free()

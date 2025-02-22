@@ -28,5 +28,12 @@ func _on_enemy_spawn_timer_timeout():
     add_child(current_mob_spawn)
 
 
-func _on_game_over():
-    print("GAME OVER")
+func _on_player_health_changed():
+    if GameState.player_hp == 3:
+        $HUD/HealthIndicator.play("3hp")
+    elif GameState.player_hp == 2:
+        $HUD/HealthIndicator.play("2hp")
+    elif GameState.player_hp == 1:
+        $HUD/HealthIndicator.play("1hp")
+    elif GameState.player_hp <= 0:
+        print("GAME OVER")

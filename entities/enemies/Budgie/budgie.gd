@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@export var feather_scene : PackedScene
 @export var speed : int
 var player_node : CharacterBody2D
 var hp : int = 1
@@ -20,7 +21,11 @@ func die():
     $AnimatedSprite2D.play("die")
     is_dying = true
     remove_from_group("enemies") # this is so that the bullet will go through it while dying
+    
 
 func _on_animated_sprite_2d_animation_finished():
     if $AnimatedSprite2D.animation == "die":
+        var feather_spawn = feather_scene.instantiate()
+        feather_spawn.global_position = global_position
+        get_tree().current_scene.add_child(feather_spawn)
         queue_free()

@@ -1,9 +1,8 @@
 extends CharacterBody2D
 
-signal game_over
+signal health_changed
 @export var bullet_scene : PackedScene
 @export var speed : int
-var hp : int = 1
 
 var input_vector : Vector2
 
@@ -51,19 +50,20 @@ func shoot():
     
     
 func take_damage(damage : int):
-    hp = hp - damage
-    if (hp <= 0):
+    GameState.player_hp = GameState.player_hp - damage
+    if (GameState.player_hp <= 0):
         die()
     else:
         is_hurt = true
+        health_changed.emit()
         
 
 func die():
     is_dying = true
-    game_over.emit()
 
 
 func _on_area_2d_body_entered(body):
+    print("entered")
     if body.is_in_group("enemies"):
         take_damage(1)
         

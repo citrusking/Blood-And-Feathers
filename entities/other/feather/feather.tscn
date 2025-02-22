@@ -1,0 +1,99 @@
+[gd_scene load_steps=15 format=3 uid="uid://dw1dwmoh8wykv"]
+
+[ext_resource type="Texture2D" uid="uid://i6xm5gu463hg" path="res://assets/feather_sheet.png" id="1_fea4d"]
+[ext_resource type="Script" path="res://entities/other/feather/feather.gd" id="2_dqych"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uc2fw"]
+atlas = ExtResource("1_fea4d")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pph66"]
+atlas = ExtResource("1_fea4d")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otlo0"]
+atlas = ExtResource("1_fea4d")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ajma"]
+atlas = ExtResource("1_fea4d")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrigd"]
+atlas = ExtResource("1_fea4d")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yj500"]
+atlas = ExtResource("1_fea4d")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcadj"]
+atlas = ExtResource("1_fea4d")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyeoh"]
+atlas = ExtResource("1_fea4d")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdm36"]
+atlas = ExtResource("1_fea4d")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5tvy"]
+atlas = ExtResource("1_fea4d")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_du0dd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uc2fw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pph66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otlo0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ajma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrigd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yj500")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcadj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyeoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdm36")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5tvy")
+}],
+"loop": true,
+"name": &"flymetothemoon",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_toyh4"]
+size = Vector2(28, 30)
+
+[node name="Feather" type="AnimatedSprite2D"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_du0dd")
+animation = &"flymetothemoon"
+script = ExtResource("2_dqych")
+
+[node name="Area2D" type="Area2D" parent="." groups=["feathers"]]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_toyh4")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
