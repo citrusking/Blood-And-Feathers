@@ -20,12 +20,13 @@ func _physics_process(delta):
 func die():
     $AnimatedSprite2D.play("die")
     is_dying = true
+    set_collision_layer_value(3, false)
     remove_from_group("enemies") # this is so that the bullet will go through it while dying
+    var feather_spawn = feather_scene.instantiate()
+    feather_spawn.global_position = global_position
+    get_tree().current_scene.add_child(feather_spawn)
     
 
 func _on_animated_sprite_2d_animation_finished():
     if $AnimatedSprite2D.animation == "die":
-        var feather_spawn = feather_scene.instantiate()
-        feather_spawn.global_position = global_position
-        get_tree().current_scene.add_child(feather_spawn)
         queue_free()

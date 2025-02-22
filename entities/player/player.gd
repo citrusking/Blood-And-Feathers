@@ -51,11 +51,11 @@ func shoot():
     
 func take_damage(damage : int):
     GameState.player_hp = GameState.player_hp - damage
+    health_changed.emit()
     if (GameState.player_hp <= 0):
         die()
     else:
         is_hurt = true
-        health_changed.emit()
         
 
 func die():
@@ -63,7 +63,6 @@ func die():
 
 
 func _on_area_2d_body_entered(body):
-    print("entered")
     if body.is_in_group("enemies"):
         take_damage(1)
         

@@ -23,4 +23,4 @@ func _on_body_entered(body):
         body.hp = body.hp - bullet_damage
         if (body.hp <= 0):
             body.die()
-        queue_free()
+    queue_free()

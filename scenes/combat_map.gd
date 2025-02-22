@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var pigeon_scene : PackedScene
+@export var budgie_scene : PackedScene
 
 
 # Called when the node enters the scene tree for the first time.
@@ -21,7 +21,7 @@ func _on_enemy_spawn_timer_timeout():
     
     var spawn_vector = Vector2(spawn_radius, 0).rotated(randf_range(0, 2 * PI))
     
-    var current_mob_spawn = pigeon_scene.instantiate()
+    var current_mob_spawn = budgie_scene.instantiate()
     current_mob_spawn.position = $Player.position + spawn_vector
     current_mob_spawn.velocity = $Player.position - current_mob_spawn.position
     current_mob_spawn.player_node = $Player
@@ -36,4 +36,5 @@ func _on_player_health_changed():
     elif GameState.player_hp == 1:
         $HUD/HealthIndicator.play("1hp")
     elif GameState.player_hp <= 0:
+        $HUD/HealthIndicator.play("0hp")
         print("GAME OVER")

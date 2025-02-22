@@ -78,13 +78,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"flymetothemoon",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_toyh4"]
 size = Vector2(28, 30)
 
 [node name="Feather" type="AnimatedSprite2D"]
+z_index = -1
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_du0dd")
 animation = &"flymetothemoon"

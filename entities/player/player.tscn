@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dq3k14ognqmkb"]
+[gd_scene load_steps=43 format=3 uid="uid://dq3k14ognqmkb"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_8tkdy"]
 [ext_resource type="PackedScene" uid="uid://dfpq6idrqlmmq" path="res://entities/other/bullet/bullet.tscn" id="2_h0jmh"]
@@ -147,7 +147,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"die",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -164,7 +164,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hurt",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -187,7 +187,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -201,7 +201,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"shoot",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -224,7 +224,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_312ic"]
@@ -274,8 +274,17 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 10.0
 }]
+
+[sub_resource type="Gradient" id="Gradient_16i12"]
+offsets = PackedFloat32Array(0.688312, 0.915584, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.616883, 0.616883, 0.616883, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4s7e4"]
+gradient = SubResource("Gradient_16i12")
+fill_from = Vector2(1, 0)
+fill_to = Vector2(0, 1)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -297,13 +306,13 @@ visible = false
 shape = SubResource("CircleShape2D_l7buk")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.5, 1.5)
+zoom = Vector2(2, 2)
 
 [node name="AnimatedSpriteTop" type="AnimatedSprite2D" parent="."]
 z_index = 1
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_mlks1")
-animation = &"shoot"
+animation = &"walk"
 
 [node name="AnimatedSpriteBottom" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -312,6 +321,17 @@ animation = &"walk"
 
 [node name="BulletOrigin" type="Marker2D" parent="."]
 position = Vector2(31, 8)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+
+[node name="Flashlight" type="PointLight2D" parent="."]
+position = Vector2(16, 0)
+rotation = 0.436332
+scale = Vector2(10, 10)
+skew = 0.698132
+energy = 1.75
+texture = SubResource("GradientTexture2D_4s7e4")
+offset = Vector2(32, -32)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="animation_finished" from="AnimatedSpriteTop" to="." method="_on_animation_finished"]
