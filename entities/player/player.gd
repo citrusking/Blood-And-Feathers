@@ -10,7 +10,8 @@ var is_moving : bool = false
 var is_shooting : bool = false
 var is_hurt : bool = false
 var is_dying : bool = false
-var is_dead: bool = false
+var is_dead : bool = false
+var can_shoot : bool = true
 
 
 # Called when the node enters the scene tree for the first time.
@@ -22,7 +23,7 @@ func _ready():
 func _physics_process(delta):
     if !is_dying and !is_dead:
         look_at(get_global_mouse_position())
-        if (Input.is_action_just_pressed("shoot")):
+        if (Input.is_action_just_pressed("shoot") and can_shoot):
             shoot()
         move(delta)
         move_and_slide()
@@ -42,11 +43,15 @@ func move(delta):
 
 func shoot():
     is_shooting = true
+    can_shoot = false
+    $AnimationPlayer.play("muzzle_flash")
     var bullet_spawn = bullet_scene.instantiate()
     bullet_spawn.position = $BulletOrigin.global_position
     bullet_spawn.rotation = $BulletOrigin.global_rotation
     bullet_spawn.direction = (get_global_mouse_position() - global_position).normalized()
     get_tree().current_scene.add_child(bullet_spawn)
+    await get_tree().create_timer(1 / GameState.fire_rate).timeout
+    can_shoot = true
     
     
 func take_damage(damage : int):
