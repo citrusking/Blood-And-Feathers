@@ -288,7 +288,7 @@ fill_to = Vector2(0, 1)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 9
 motion_mode = 1
 script = ExtResource("1_8tkdy")
 bullet_scene = ExtResource("2_h0jmh")
@@ -321,8 +321,6 @@ animation = &"walk"
 
 [node name="BulletOrigin" type="Marker2D" parent="."]
 position = Vector2(31, 8)
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
 
 [node name="Flashlight" type="PointLight2D" parent="."]
 position = Vector2(16, 0)
