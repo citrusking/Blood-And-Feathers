@@ -26,6 +26,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAI
 tile_set = ExtResource("4_3fyep")
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
+autostart = true
 
 [node name="HUD" parent="." instance=ExtResource("5_b8273")]
 
