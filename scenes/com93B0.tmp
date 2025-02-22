@@ -1,16 +1,14 @@
-[gd_scene load_steps=7 format=4 uid="uid://e02jvyl6w3fx"]
+[gd_scene load_steps=6 format=4 uid="uid://e02jvyl6w3fx"]
 
 [ext_resource type="Script" path="res://scenes/combat_map.gd" id="1_htq3j"]
 [ext_resource type="PackedScene" uid="uid://dq3k14ognqmkb" path="res://entities/player/player.tscn" id="1_mcpit"]
-[ext_resource type="PackedScene" uid="uid://bwxibb6t4hdlo" path="res://entities/enemies/Chicken/chicken.tscn" id="2_gu5ut"]
-[ext_resource type="PackedScene" uid="uid://bpoiq6agkq6a5" path="res://entities/enemies/Budgie/budgie.tscn" id="2_it0dj"]
-[ext_resource type="TileSet" uid="uid://5swaq0aekdhn" path="res://scenes/tileset.tres" id="4_3fyep"]
+[ext_resource type="PackedScene" uid="uid://h2v7ud0vxjlb" path="res://entities/enemies/Chicken/chicken.tscn" id="2_gu5ut"]
+[ext_resource type="TileSet" uid="uid://c0psnb18ve0ek" path="res://scenes/tileset.tres" id="4_3fyep"]
 [ext_resource type="PackedScene" uid="uid://l2bi7ue4fgk4" path="res://ui/hud.tscn" id="5_b8273"]
 
 [node name="CombatMap" type="Node2D"]
 script = ExtResource("1_htq3j")
-budgie = ExtResource("2_it0dj")
-chicken = ExtResource("2_gu5ut")
+budgie_scene = ExtResource("2_gu5ut")
 
 [node name="Player" parent="." instance=ExtResource("1_mcpit")]
 position = Vector2(557, 362)
@@ -26,11 +24,12 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAI
 tile_set = ExtResource("4_3fyep")
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
+autostart = true
 
 [node name="HUD" parent="." instance=ExtResource("5_b8273")]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.118579, 0.118582, 0.118581, 1)
+color = Color(0.262928, 0.262934, 0.262932, 1)
 
 [connection signal="health_changed" from="Player" to="." method="_on_player_health_changed"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
