@@ -1,0 +1,150 @@
+[gd_scene load_steps=21 format=3 uid="uid://bpoiq6agkq6a5"]
+
+[ext_resource type="Script" path="res://entities/enemies/Budgie/budgie.gd" id="1_mx2u3"]
+[ext_resource type="Texture2D" uid="uid://dwdujwuxwk6ix" path="res://assets/budgie_sheet.png" id="2_jkr37"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1cy14"]
+size = Vector2(48, 44)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kd1ju"]
+atlas = ExtResource("2_jkr37")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfwhb"]
+atlas = ExtResource("2_jkr37")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mclmv"]
+atlas = ExtResource("2_jkr37")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p15lc"]
+atlas = ExtResource("2_jkr37")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlljl"]
+atlas = ExtResource("2_jkr37")
+region = Rect2(256, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bu6u8"]
+atlas = ExtResource("2_jkr37")
+region = Rect2(320, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_endyi"]
+atlas = ExtResource("2_jkr37")
+region = Rect2(384, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8be4h"]
+atlas = ExtResource("2_jkr37")
+region = Rect2(448, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lj6im"]
+atlas = ExtResource("2_jkr37")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cik0"]
+atlas = ExtResource("2_jkr37")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfk08"]
+atlas = ExtResource("2_jkr37")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54xmh"]
+atlas = ExtResource("2_jkr37")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxvhq"]
+atlas = ExtResource("2_jkr37")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yykvd"]
+atlas = ExtResource("2_jkr37")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78d28"]
+atlas = ExtResource("2_jkr37")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fi6g1"]
+atlas = ExtResource("2_jkr37")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3bwn7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kd1ju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfwhb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mclmv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p15lc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wlljl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bu6u8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_endyi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8be4h")
+}],
+"loop": false,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lj6im")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8cik0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfk08")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54xmh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxvhq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yykvd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78d28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fi6g1")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Budgie" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_mx2u3")
+speed = 2000
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_1cy14")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_3bwn7")
+animation = &"die"
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
