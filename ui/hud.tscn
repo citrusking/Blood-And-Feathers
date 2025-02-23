@@ -1,7 +1,119 @@
-[gd_scene load_steps=71 format=3 uid="uid://l2bi7ue4fgk4"]
+[gd_scene load_steps=105 format=3 uid="uid://l2bi7ue4fgk4"]
 
 [ext_resource type="Texture2D" uid="uid://b48niy8g0p7fy" path="res://assets/health_ui_sheet.png" id="1_05uuv"]
 [ext_resource type="Script" path="res://ui/hud.gd" id="1_chu5o"]
+[ext_resource type="Texture2D" uid="uid://cyjvd7p6hulwv" path="res://assets/cursor_aim_sheet.png" id="2_y8ryr"]
+[ext_resource type="Texture2D" uid="uid://hn6eitn4l6b2" path="res://assets/clockhouse-sheet.png" id="3_3m76u"]
+[ext_resource type="Texture2D" uid="uid://c0wa6dct5w4g0" path="res://assets/clock.png" id="4_3y2e5"]
+[ext_resource type="FontFile" uid="uid://ck0koyd3diw3n" path="res://assets/baftla_font_white.png" id="5_o01tl"]
+[ext_resource type="Texture2D" uid="uid://i6xm5gu463hg" path="res://assets/feather_sheet.png" id="6_fv38r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtl72"]
+atlas = ExtResource("2_y8ryr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3kor"]
+atlas = ExtResource("2_y8ryr")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rt0dc"]
+atlas = ExtResource("2_y8ryr")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x1r5j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtl72")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3kor")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rt0dc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13rvr"]
+atlas = ExtResource("6_fv38r")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rckx"]
+atlas = ExtResource("6_fv38r")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hepuw"]
+atlas = ExtResource("6_fv38r")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ps50f"]
+atlas = ExtResource("6_fv38r")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75263"]
+atlas = ExtResource("6_fv38r")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fuclk"]
+atlas = ExtResource("6_fv38r")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkyys"]
+atlas = ExtResource("6_fv38r")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6mo3"]
+atlas = ExtResource("6_fv38r")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yciv0"]
+atlas = ExtResource("6_fv38r")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6e80k"]
+atlas = ExtResource("6_fv38r")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jwisd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13rvr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rckx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hepuw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ps50f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75263")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fuclk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vkyys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6mo3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yciv0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6e80k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l2cw4"]
 atlas = ExtResource("1_05uuv")
@@ -491,14 +603,180 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfksj"]
+atlas = ExtResource("3_3m76u")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsd5p"]
+atlas = ExtResource("3_3m76u")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qttp"]
+atlas = ExtResource("3_3m76u")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h14bv"]
+atlas = ExtResource("3_3m76u")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xeold"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfksj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsd5p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6qttp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h14bv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejtsh"]
+atlas = ExtResource("4_3y2e5")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mpex"]
+atlas = ExtResource("4_3y2e5")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qe5na"]
+atlas = ExtResource("4_3y2e5")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mneap"]
+atlas = ExtResource("4_3y2e5")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ik6h7"]
+atlas = ExtResource("4_3y2e5")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjyl3"]
+atlas = ExtResource("4_3y2e5")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_suieb"]
+atlas = ExtResource("4_3y2e5")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yf0p4"]
+atlas = ExtResource("4_3y2e5")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vt5lp"]
+animations = [{
+"frames": [{
+"duration": 15.0,
+"texture": SubResource("AtlasTexture_ejtsh")
+}, {
+"duration": 15.0,
+"texture": SubResource("AtlasTexture_2mpex")
+}, {
+"duration": 15.0,
+"texture": SubResource("AtlasTexture_qe5na")
+}, {
+"duration": 15.0,
+"texture": SubResource("AtlasTexture_mneap")
+}, {
+"duration": 15.0,
+"texture": SubResource("AtlasTexture_ik6h7")
+}, {
+"duration": 15.0,
+"texture": SubResource("AtlasTexture_yjyl3")
+}, {
+"duration": 15.0,
+"texture": SubResource("AtlasTexture_suieb")
+}, {
+"duration": 15.0,
+"texture": SubResource("AtlasTexture_yf0p4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
 [node name="HUD" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_chu5o")
 
+[node name="CursorTracker" type="Node2D" parent="."]
+process_mode = 1
+
+[node name="Cursor" type="AnimatedSprite2D" parent="CursorTracker"]
+process_mode = 1
+sprite_frames = SubResource("SpriteFrames_x1r5j")
+
+[node name="Feathers" type="AnimatedSprite2D" parent="."]
+process_mode = 1
+position = Vector2(1080, 576)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_jwisd")
+
+[node name="FeatherCounter" type="Label" parent="Feathers"]
+process_mode = 1
+offset_left = -589.0
+offset_top = -11.0
+offset_right = 539.0
+offset_bottom = 29.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/font = ExtResource("5_o01tl")
+theme_override_font_sizes/font_size = 40
+text = "10
+"
+horizontal_alignment = 2
+
 [node name="HealthIndicator" type="AnimatedSprite2D" parent="."]
+process_mode = 1
 texture_filter = 1
 position = Vector2(144, 552)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_vqbjs")
 animation = &"3hp"
+
+[node name="ClockTimer" type="AnimatedSprite2D" parent="."]
+process_mode = 1
+position = Vector2(1056, 96)
+sprite_frames = SubResource("SpriteFrames_xeold")
+
+[node name="ClockFace" type="AnimatedSprite2D" parent="ClockTimer"]
+process_mode = 1
+position = Vector2(0, 3)
+sprite_frames = SubResource("SpriteFrames_vt5lp")
+metadata/_edit_lock_ = true
+
+[node name="GoalCounters" type="Label" parent="."]
+process_mode = 1
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 320.0
+offset_bottom = 123.0
+theme_override_fonts/font = ExtResource("5_o01tl")
+theme_override_font_sizes/font_size = 40
+text = "Night 1
+Nests 0"
+
+[node name="PauseScreen" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 0.74902)
+
+[node name="Label" type="Label" parent="PauseScreen"]
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 648.0
+theme_override_fonts/font = ExtResource("5_o01tl")
+theme_override_font_sizes/font_size = 50
+text = "Press ESC
+to continue"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="animation_finished" from="HealthIndicator" to="." method="_on_health_indicator_animation_finished"]

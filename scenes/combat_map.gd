@@ -7,38 +7,29 @@ extends Node2D
 var enemyArray
 var eggnum : int = 2
 var win = false
-var fullscreen : bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
-        fullscreen = true
-    else:
-        fullscreen = false
-    
     # Enemies for level
-    enemyArray = [budgie, budgie, budgie, chicken, pelican]
+    if GameState.night == 1:
+        enemyArray = [budgie, budgie, budgie, chicken, pelican]
     
     # Eggs for level
     var eggspawns = $EggMarkers.get_children()
-    print($EggTasks.get_children())
     for i in eggnum:
         var eggspawnPositionMarker = eggspawns.pop_at(randi() % eggspawns.size())
         var current_eggspawn = egg.instantiate()
         current_eggspawn.position = eggspawnPositionMarker.position
+        current_eggspawn.connect("deadEgg", updateNestCounter)
         $EggTasks.add_child(current_eggspawn)
-    print($EggTasks.get_children())
+    $HUD/GoalCounters.text = "NIGHT " + str(GameState.night) + "\nNESTS " + str(eggnum)
     pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-    if Input.is_action_just_pressed("fullscreen"):
-        if fullscreen:
-            DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-            fullscreen = false
-        else:
-            DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-            fullscreen = true
+    if ($LevelTimer.time_left == 120):
+        $HUD/ClockTimer/ClockFace.play("default")
+        $HUD/ClockTimer/ClockFace.frame = 0
     
     if !win:
         win = true
@@ -67,7 +58,6 @@ func _on_enemy_spawn_timer_timeout():
     add_child(current_mob_spawn)
     #"""
 
-
 func _on_player_health_changed():
     if GameState.player_hp == 3:
         $HUD/HealthIndicator.play("3hp")
@@ -77,4 +67,14 @@ func _on_player_health_changed():
         $HUD/HealthIndicator.play("1hp")
     elif GameState.player_hp <= 0:
         $HUD/HealthIndicator.play("0hp")
-        print("GAME OVER")
+        #print("GAME OVER")
+
+func _on_level_timer_timeout():
+    print("TIMED OUT")
+    $Player.take_damage(3)
+    _on_player_health_changed()
+    pass # Replace with function body.
+
+func updateNestCounter():
+    eggnum -= 1
+    $HUD/GoalCounters.text = "NIGHT " + str(GameState.night) + "\nNESTS " + str(eggnum)

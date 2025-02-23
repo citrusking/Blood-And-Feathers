@@ -6,6 +6,8 @@ var max_hp : float = hp
 var brokenTriggers = [0,0,0]
 var dead : bool = false
 
+signal deadEgg
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     $AnimatedSprite2D.play("full")
@@ -23,6 +25,7 @@ func _process(delta: float) -> void:
         $AnimatedSprite2D.play("kill")
         brokenTriggers[2] = 1
         dead = true
+        deadEgg.emit()
     pass
 
 func _on_animated_sprite_2d_animation_finished():
