@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bp44qq618h3gj"]
+[gd_scene load_steps=24 format=3 uid="uid://dm7mingx0wlik"]
 
 [ext_resource type="Script" path="res://ui/main_menu.gd" id="1_0au8i"]
 [ext_resource type="Texture2D" uid="uid://dqlq7mn71767f" path="res://assets/title_sequence_sheet.png" id="1_hbgjf"]
@@ -209,7 +209,6 @@ anchors_preset = 0
 script = ExtResource("1_0au8i")
 
 [node name="TitleSequence" type="AnimatedSprite2D" parent="."]
-visible = false
 texture_filter = 1
 position = Vector2(576, 324)
 scale = Vector2(2.4, 2.4)
