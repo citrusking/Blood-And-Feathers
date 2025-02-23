@@ -6,6 +6,7 @@ signal health_changed
 
 @onready var ouch1 = preload("res://assets/sounds/hurt_1.mp3")
 @onready var ouch2 = preload("res://assets/sounds/hurt_2.mp3")
+@onready var hit = preload("res://assets/sounds/hitHurt.wav")
 @onready var dead = preload("res://assets/sounds/dead_player.mp3")
 @onready var gunshot = preload("res://assets/sounds/pistol-shot.mp3")
 
@@ -66,11 +67,11 @@ func take_damage(damage : int):
         if !is_dying:
             die()
     elif (GameState.player_hp <= 1):
-        $SFX/HurtSFX.stream = ouch2
+        $SFX/HurtSFX.stream = hit
         $SFX/HurtSFX.pitch_scale = 1
         $SFX/HurtSFX.play()
     elif (GameState.player_hp <= 2):
-        $SFX/HurtSFX.stream = ouch1
+        $SFX/HurtSFX.stream = hit
         $SFX/HurtSFX.pitch_scale = 1
         $SFX/HurtSFX.play()
     else:

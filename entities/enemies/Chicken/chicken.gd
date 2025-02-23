@@ -8,7 +8,7 @@ extends CharacterBody2D
 @onready var cluck = preload("res://assets/sounds/chicken_1.mp3")
 var player_node : CharacterBody2D
 var player_position : Vector2
-var hp : int = .5
+var hp : int = 1
 
 var is_dying : bool = false
 var in_radius : bool = false

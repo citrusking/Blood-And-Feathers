@@ -7,7 +7,7 @@ extends StaticBody2D
 
 
 var player_node : CharacterBody2D
-var hp : float = GameState.night * 10
+var hp : float = (GameState.night - 1) * 3 + 10
 var max_hp : float = hp
 var brokenTriggers = [0,0,0]
 var dead : bool = false

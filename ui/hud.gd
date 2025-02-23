@@ -7,6 +7,7 @@ var pauseButtonToggle : bool = false
 var fullscreen : bool
 var startTutorial : bool = true
 var gameOverToggle : bool = false
+var timeoutToggle : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,6 +18,7 @@ func _ready():
     else:
         fullscreen = false
     $PauseScreen.visible = false
+    $GameOverScreen/TimeoutSprite.visible = false
     
     Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
     $HealthIndicator.play("3hp")
@@ -91,7 +93,10 @@ func _on_button_button_down() -> void:
 
 func gameOver():
     if !gameOverToggle:
+        $GameOverScreen.modulate = "ffffff00"
         $GameOverScreen.visible = true
+        if timeoutToggle:
+            $GameOverScreen/TimeoutSprite.visible = true
         $GameOverScreen/AnimationPlayer.play("GameOver")
         gameOverToggle = true
 

@@ -325,8 +325,6 @@ colors = PackedColorArray(1, 1, 1, 1, 0.571429, 0.571429, 0.571429, 1, 0, 0, 0, 
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_qwaw5"]
 gradient = SubResource("Gradient_eni1j")
-width = 1000
-height = 1000
 fill = 1
 fill_from = Vector2(0.495413, 0.495413)
 fill_to = Vector2(0.770642, 0.247706)
@@ -466,7 +464,6 @@ animation = &"walk"
 position = Vector2(31, 8)
 
 [node name="Flashlight_1" type="PointLight2D" parent="."]
-visible = false
 position = Vector2(16, 0)
 rotation = 0.349066
 scale = Vector2(10, 10)
@@ -504,6 +501,7 @@ texture = SubResource("GradientTexture2D_52hvt")
 offset = Vector2(32, -32)
 
 [node name="Flashlight_3" type="PointLight2D" parent="."]
+visible = false
 position = Vector2(16, 0)
 rotation = 0.872665
 scale = Vector2(10, 10)

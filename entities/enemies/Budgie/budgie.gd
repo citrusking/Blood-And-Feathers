@@ -6,7 +6,7 @@ extends CharacterBody2D
 @onready var death = preload("res://assets/sounds/budgieBlowup.mp3")
     
 var player_node : CharacterBody2D
-var hp : int = 1
+var hp : int = 2
 
 var is_dying : bool = false
 

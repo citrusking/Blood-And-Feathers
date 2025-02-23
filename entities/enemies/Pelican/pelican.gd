@@ -55,16 +55,17 @@ func _on_animated_sprite_2d_animation_finished():
             $AnimatedSprite2D.play("walk")
 
 func _on_timer_timeout() -> void:
-    $AnimatedSprite2D.play("shoot")
-    var bullet_spawn = bullet_scene.instantiate()
-    bullet_spawn.position = $BulletOrigin.global_position
-    bullet_spawn.rotation = $BulletOrigin.global_rotation
-    bullet_spawn.direction = ($BulletOrigin.global_position - global_position).normalized()
-    get_tree().current_scene.add_child(bullet_spawn)
-    bullet_spawn.player_node = player_node
-    $SFX/BirdSFX.stream = fish
-    $SFX/BirdSFX.pitch_scale = randf_range(.85, 1.15)
-    $SFX/BirdSFX.play()
+    if !is_dying:
+        $AnimatedSprite2D.play("shoot")
+        var bullet_spawn = bullet_scene.instantiate()
+        bullet_spawn.position = $BulletOrigin.global_position
+        bullet_spawn.rotation = $BulletOrigin.global_rotation
+        bullet_spawn.direction = ($BulletOrigin.global_position - global_position).normalized()
+        get_tree().current_scene.add_child(bullet_spawn)
+        bullet_spawn.player_node = player_node
+        $SFX/BirdSFX.stream = fish
+        $SFX/BirdSFX.pitch_scale = randf_range(.85, 1.15)
+        $SFX/BirdSFX.play()
     pass # Replace with function body.
 
 func hurtAudio():

@@ -4,19 +4,84 @@ extends Node2D
 @export var chicken : PackedScene
 @export var pelican : PackedScene
 @export var egg : PackedScene
+<<<<<<< Updated upstream
 
 
+=======
+@onready var battleTrack = preload("res://assets/sounds/Beasuce - Half Past Apocalypse.mp3")
+>>>>>>> Stashed changes
 var enemyArray
-var eggnum : int = 2
+var eggnum : int
 var win = false
+var enemyHpMult : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+<<<<<<< Updated upstream
     GameState.reload_shop = true
     
+=======
+    $Music.stream = battleTrack
+    $Music.pitch_scale = 1
+    $Music.play()
+>>>>>>> Stashed changes
     # Enemies for level
-    if GameState.night == 1:
-        enemyArray = [budgie, budgie, budgie, chicken, pelican]
+    match GameState.night:
+        1:
+            enemyArray = [budgie]
+            enemyHpMult = 1
+            eggnum = 1
+            $EnemySpawnTimer.wait_time = 10
+        2:
+            enemyArray = [budgie]
+            enemyHpMult = 1
+            eggnum = 3
+            $EnemySpawnTimer.wait_time = 7.5
+        3:
+            enemyArray = [chicken]
+            enemyHpMult = 1
+            eggnum = 3
+            $EnemySpawnTimer.wait_time = 10
+        4:
+            enemyArray = [budgie, budgie, chicken]
+            enemyHpMult = 2
+            eggnum = 3
+            $EnemySpawnTimer.wait_time = 7.5
+        5:
+            enemyArray = [pelican]
+            enemyHpMult = 1
+            eggnum = 5
+            $EnemySpawnTimer.wait_time = 5
+        6:
+            enemyArray = [budgie, budgie, pelican]
+            enemyHpMult = 2
+            eggnum = 5
+            $EnemySpawnTimer.wait_time = 5
+        7:
+            enemyArray = [budgie, budgie, budgie, pelican, chicken]
+            enemyHpMult = 1
+            eggnum = 5
+            $EnemySpawnTimer.wait_time = 2.5
+        8:
+            enemyArray = [budgie, budgie, budgie, pelican, chicken]
+            enemyHpMult = 2
+            eggnum = 5
+            $EnemySpawnTimer.wait_time = 2.5
+        9:
+            enemyArray = [budgie, budgie, budgie, pelican, chicken]
+            enemyHpMult = 2
+            eggnum = 5
+            $EnemySpawnTimer.wait_time = 1
+        10:
+            enemyArray = [budgie, budgie, budgie, pelican, chicken]
+            enemyHpMult = 3
+            eggnum = 5
+            $EnemySpawnTimer.wait_time = 1
+        _:
+            enemyArray = [budgie, budgie, pelican, chicken]
+            enemyHpMult = GameState.night / 3
+            eggnum = 5
+            $EnemySpawnTimer.wait_time = .5
     
     # Eggs for level
     var eggspawns = $EggMarkers.get_children()
@@ -27,6 +92,9 @@ func _ready():
         current_eggspawn.connect("deadEgg", updateNestCounter)
         $EggTasks.add_child(current_eggspawn)
     $HUD/GoalCounters.text = "NIGHT " + str(GameState.night) + "\nNESTS " + str(eggnum)
+    
+    var playerspawns = $PlayerMarkers.get_children()
+    $Player.position = playerspawns[randi() % playerspawns.size()].position
     pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,6 +106,8 @@ func _process(delta):
     if ($LevelTimer.time_left >= 120):
         $HUD/ClockTimer/ClockFace.play("default")
         $HUD/ClockTimer/ClockFace.frame = 0
+    if ($LevelTimer.time_left <= 15):
+        $HUD/ClockTimer.modulate = "ff4040ff"
     
     if !win:
         win = true
@@ -62,6 +132,7 @@ func _on_enemy_spawn_timer_timeout():
     current_mob_spawn.position = $Player.position + spawn_vector
     current_mob_spawn.velocity = $Player.position - current_mob_spawn.position
     current_mob_spawn.player_node = $Player
+    current_mob_spawn.hp *= enemyHpMult
     add_child(current_mob_spawn)
 
 
@@ -78,6 +149,11 @@ func _on_player_health_changed():
         print("GAME OVER")
 
 func _on_level_timer_timeout():
+<<<<<<< Updated upstream
+=======
+    $HUD.timeoutToggle = true
+    print("TIMED OUT")
+>>>>>>> Stashed changes
     $Player.take_damage(3)
     _on_player_health_changed()
     
