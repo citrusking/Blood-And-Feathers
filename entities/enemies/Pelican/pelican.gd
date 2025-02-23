@@ -3,6 +3,9 @@ extends CharacterBody2D
 @export var bullet_scene : PackedScene
 @export var feather_scene : PackedScene
 @export var speed : int
+@onready var hit = preload("res://assets/sounds/gunhit.wav")
+@onready var death = preload("res://assets/sounds/pelican-blowup.mp3")
+@onready var fish = preload("res://assets/sounds/pelican-spit.mp3")
 var player_node : CharacterBody2D
 var player_position : Vector2
 var hp : int = 3
@@ -43,7 +46,8 @@ func die(feather_drop : bool):
 
 func _on_animated_sprite_2d_animation_finished():
     if $AnimatedSprite2D.animation == "die":
-        queue_free()
+        $CollisionShape2D.disabled = true
+        $AnimatedSprite2D.visible = false
     if $AnimatedSprite2D.animation == "shoot":
         if is_dying:
             $AnimatedSprite2D.play("die")
@@ -58,4 +62,23 @@ func _on_timer_timeout() -> void:
     bullet_spawn.direction = ($BulletOrigin.global_position - global_position).normalized()
     get_tree().current_scene.add_child(bullet_spawn)
     bullet_spawn.player_node = player_node
+    $SFX/BirdSFX.stream = fish
+    $SFX/BirdSFX.pitch_scale = randf_range(.85, 1.15)
+    $SFX/BirdSFX.play()
+    pass # Replace with function body.
+
+func hurtAudio():
+    if hp > 0:
+        $SFX/HurtSFX.stream = hit
+        $SFX/HurtSFX.pitch_scale = randf_range(.85, 1.15)
+        $SFX/HurtSFX.play()
+    else:
+        $SFX/HurtSFX.stream = death
+        $SFX/HurtSFX.pitch_scale = randf_range(.85, 1.15)
+        $SFX/HurtSFX.play()
+
+func _on_hurt_sfx_finished() -> void:
+    if $SFX/HurtSFX.stream == death:
+        remove_from_group("enemies")
+        queue_free()
     pass # Replace with function body.

@@ -325,6 +325,8 @@ colors = PackedColorArray(1, 1, 1, 1, 0.571429, 0.571429, 0.571429, 1, 0, 0, 0, 
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_qwaw5"]
 gradient = SubResource("Gradient_eni1j")
+width = 1000
+height = 1000
 fill = 1
 fill_from = Vector2(0.495413, 0.495413)
 fill_to = Vector2(0.770642, 0.247706)
@@ -541,6 +543,14 @@ occluder = SubResource("OccluderPolygon2D_wr0el")
 libraries = {
 "": SubResource("AnimationLibrary_epa50")
 }
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="HurtSFX" type="AudioStreamPlayer2D" parent="SFX"]
+playback_type = 1
+
+[node name="PlayerSFX" type="AudioStreamPlayer2D" parent="SFX"]
+volume_db = -15.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="animation_finished" from="AnimatedSpriteTop" to="." method="_on_animation_finished"]

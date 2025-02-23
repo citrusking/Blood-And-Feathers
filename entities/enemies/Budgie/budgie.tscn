@@ -198,4 +198,12 @@ libraries = {
 "": SubResource("AnimationLibrary_s12x8")
 }
 
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="HurtSFX" type="AudioStreamPlayer2D" parent="SFX"]
+volume_db = -10.0
+
+[node name="BirdSFX" type="AudioStreamPlayer2D" parent="SFX"]
+volume_db = -10.0
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
