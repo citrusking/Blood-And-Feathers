@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var bullet_speed : int
-@export var bullet_damage : int
+@export var bullet_damage : int = GameState.bullet_damage
 var direction : Vector2
 
 # Called when the node enters the scene tree for the first time.

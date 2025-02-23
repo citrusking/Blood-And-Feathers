@@ -1,5 +1,7 @@
 extends Control
 
+@export var combat_scene : PackedScene
+
 var accept_input = false
 var key_pressed = false
 
@@ -17,6 +19,9 @@ func _input(event):
     if event is InputEventKey and accept_input:
         $AnimationPlayer.play("text_select")
         key_pressed = true
+        await $AnimationPlayer.animation_finished
+        await get_tree().create_timer(1).timeout
+        $TitleSequence.visible = false
 
 
 func _on_title_sequence_animation_finished():
@@ -26,7 +31,13 @@ func _on_title_sequence_animation_finished():
         $AnimationPlayer.play("flashing_text")
 
 
-func _on_animation_player_animation_finished(anim_name):
-    if anim_name == "text_select":
-        await get_tree().create_timer(1).timeout
-        $TitleSequence.visible = false
+func _on_play_button_pressed():
+    $AnimationPlayer.play("fade_to_black")
+    await $AnimationPlayer.animation_finished
+    get_tree().change_scene_to_packed(combat_scene)
+
+
+func _on_quit_button_pressed():
+    $AnimationPlayer.play("fade_to_black")
+    await $AnimationPlayer.animation_finished
+    get_tree().quit()

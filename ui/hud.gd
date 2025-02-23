@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+signal something_pressed
+signal change_scene
+
 var pauseButtonToggle : bool = false
 var fullscreen : bool
 var startTutorial : bool = true
@@ -7,6 +10,8 @@ var gameOverToggle : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+    $AnimationPlayer.play_backwards("fade_to_black")
+    
     if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
         fullscreen = true
     else:
@@ -66,6 +71,9 @@ func _input(event):
         $CursorTracker2/Sprite2D.region_rect.position = Vector2(32, 0)
     else:
         $CursorTracker2/Sprite2D.region_rect.position = Vector2(0, 0)
+        
+    if event is InputEventKey or event is InputEventMouseButton:
+        something_pressed.emit()
     
 
 func _on_health_indicator_animation_finished():
@@ -87,3 +95,12 @@ func gameOver():
         $GameOverScreen/AnimationPlayer.play("GameOver")
         print($GameOverScreen/AnimationPlayer.assigned_animation)
         gameOverToggle = true
+
+func win_combat():
+    get_tree().paused = true
+    $AnimationPlayer.play("fade_sunrise")
+    await $AnimationPlayer.animation_finished
+    await something_pressed
+    $AnimationPlayer.play("fade_to_black")
+    await $AnimationPlayer.animation_finished
+    change_scene.emit()

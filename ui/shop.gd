@@ -1,5 +1,9 @@
 extends Node2D
 
+signal shop_closing
+
+@export var combat_scene : PackedScene
+
 @export var mag1 : Texture2D
 @export var bullet1 : Texture2D
 @export var lens1 : Texture2D
@@ -21,13 +25,23 @@ var med_cost : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+    $Background.visible = false
+    Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
     populate()
+    await get_tree().create_timer(1).timeout
     $AnimationPlayer.play("background_slide")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
     pass
+
+
+func close_shop():
+    shop_closing.emit()
+    $AnimationPlayer.play("close_shop")
+    await $AnimationPlayer.animation_finished
+    queue_free()
 
 
 func populate():
@@ -186,3 +200,10 @@ func _on_medkit_pressed():
     else:
         %Description.text = "low feathers!"
     print(GameState.player_hp)
+
+
+func _on_button_pressed():
+    $AnimationPlayer.play("close_shop")
+    await $AnimationPlayer.animation_finished
+    await get_tree().create_timer(1).timeout
+    get_tree().change_scene_to_packed(combat_scene)

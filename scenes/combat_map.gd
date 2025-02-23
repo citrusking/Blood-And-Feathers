@@ -4,6 +4,9 @@ extends Node2D
 @export var chicken : PackedScene
 @export var pelican : PackedScene
 @export var egg : PackedScene
+
+@export var shop_scene : PackedScene
+
 var enemyArray
 var eggnum : int = 2
 var win = false
@@ -37,8 +40,8 @@ func _process(delta):
             if !i.dead:
                 win = false
         if win:
-            print("win")
-        pass
+            $HUD.win_combat()
+            
 
 func _on_enemy_spawn_timer_timeout():
     # find safe distance to spawn enemies (just offscreen)
@@ -79,3 +82,12 @@ func _on_level_timer_timeout():
 func updateNestCounter():
     eggnum -= 1
     $HUD/GoalCounters.text = "NIGHT " + str(GameState.night) + "\nNESTS " + str(eggnum)
+
+
+func _on_hud_change_scene():
+    get_tree().paused = false
+    get_tree().change_scene_to_packed(shop_scene)
+
+
+func _on_hud_remove_blackness():
+    $Blackness.queue_free()

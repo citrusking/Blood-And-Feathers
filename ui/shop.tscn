@@ -1,7 +1,8 @@
-[gd_scene load_steps=30 format=3 uid="uid://bxir00ch21oll"]
+[gd_scene load_steps=32 format=3 uid="uid://bxir00ch21oll"]
 
 [ext_resource type="Script" path="res://ui/shop.gd" id="1_o083l"]
 [ext_resource type="Texture2D" uid="uid://b3jxkhhr72xgn" path="res://assets/shop/shop_bg.png" id="1_xiciu"]
+[ext_resource type="PackedScene" uid="uid://e02jvyl6w3fx" path="res://scenes/combat_map.tscn" id="2_52hne"]
 [ext_resource type="Texture2D" uid="uid://b7u0scn3cer0r" path="res://assets/shop/shop_eagle.png" id="4_ukas6"]
 [ext_resource type="Texture2D" uid="uid://cs3mbqxh6uvht" path="res://assets/shop/shop_board.png" id="5_ar80p"]
 [ext_resource type="Texture2D" uid="uid://bqa1dhjilatwb" path="res://assets/shop/shop_mag2.png" id="5_bsrn8"]
@@ -14,110 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://dqh7fknkcfnkf" path="res://assets/shop/shop_medkit.png" id="9_xr72k"]
 [ext_resource type="FontFile" uid="uid://ck0koyd3diw3n" path="res://assets/baftla_font_white.png" id="13_k4xu2"]
 [ext_resource type="Texture2D" uid="uid://i6xm5gu463hg" path="res://assets/feather_sheet.png" id="13_rl36r"]
-
-[sub_resource type="Animation" id="Animation_l77fr"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Background:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(576, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Background:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(324, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("EagleShop:position:x")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("EagleShop:position:y")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
-[sub_resource type="Animation" id="Animation_7bcqc"]
-resource_name = "background_slide"
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Background:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(576, -0.25, 0, 0.25, 0, 576, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Background:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1000, -0.25, 0, 0.25, 0, 324, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-
-[sub_resource type="Animation" id="Animation_ur8qj"]
-resource_name = "shop_slide"
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("EagleShop:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("EagleShop:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -672, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_0ofk4"]
-_data = {
-"RESET": SubResource("Animation_l77fr"),
-"background_slide": SubResource("Animation_7bcqc"),
-"shop_slide": SubResource("Animation_ur8qj")
-}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qaqk3"]
 atlas = ExtResource("13_rl36r")
@@ -197,8 +94,185 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_l77fr"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(576, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(324, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EagleShop:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EagleShop:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Background:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_7bcqc"]
+resource_name = "background_slide"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(576, -0.25, 0, 0.25, 0, 576, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1000, -0.25, 0, 0.25, 0, 324, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Background:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ur8qj"]
+resource_name = "shop_slide"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EagleShop:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EagleShop:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -672, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_mnqhs"]
+resource_name = "close_shop"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(576, -0.25, 0, 0.25, 0, 576, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(324, -0.25, 0, 0.25, 0, 996, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EagleShop:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EagleShop:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-672, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0ofk4"]
+_data = {
+"RESET": SubResource("Animation_l77fr"),
+"background_slide": SubResource("Animation_7bcqc"),
+"close_shop": SubResource("Animation_mnqhs"),
+"shop_slide": SubResource("Animation_ur8qj")
+}
+
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_o083l")
+combat_scene = ExtResource("2_52hne")
 mag1 = ExtResource("6_dyk5c")
 bullet1 = ExtResource("7_ba8oh")
 lens1 = ExtResource("8_god3s")
@@ -214,11 +288,6 @@ position = Vector2(576, 324)
 scale = Vector2(2.4, 2.4)
 texture = ExtResource("1_xiciu")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_0ofk4")
-}
-
 [node name="EagleShop" type="Node2D" parent="."]
 
 [node name="Eagle" type="Sprite2D" parent="EagleShop"]
@@ -233,9 +302,9 @@ texture = ExtResource("5_ar80p")
 
 [node name="Mag" type="TextureButton" parent="EagleShop/Board"]
 unique_name_in_owner = true
-offset_left = -6.5833
+offset_left = -2.5
 offset_top = -91.0
-offset_right = 89.4167
+offset_right = 93.5
 offset_bottom = -27.0
 texture_normal = ExtResource("9_ljado")
 
@@ -249,17 +318,17 @@ texture_normal = ExtResource("9_ljado")
 
 [node name="Lens" type="TextureButton" parent="EagleShop/Board"]
 unique_name_in_owner = true
-offset_left = -6.5833
+offset_left = -2.5
 offset_top = -31.0
-offset_right = 51.4167
+offset_right = 55.5
 offset_bottom = 26.0
 texture_normal = ExtResource("9_ljado")
 
 [node name="Medkit" type="TextureButton" parent="EagleShop/Board"]
 unique_name_in_owner = true
-offset_left = 100.583
+offset_left = 100.5
 offset_top = -31.0
-offset_right = 189.583
+offset_right = 189.5
 offset_bottom = 34.0
 texture_normal = ExtResource("9_ljado")
 
@@ -275,51 +344,51 @@ horizontal_alignment = 1
 clip_text = true
 
 [node name="Markers" type="Node2D" parent="EagleShop/Board"]
-position = Vector2(12.5, 0)
+position = Vector2(-2.5, 0)
 
 [node name="Mag1Pos" type="Marker2D" parent="EagleShop/Board/Markers"]
 unique_name_in_owner = true
-position = Vector2(-42.0833, -98)
+position = Vector2(-23, -98)
 
 [node name="Mag2Pos" type="Marker2D" parent="EagleShop/Board/Markers"]
 unique_name_in_owner = true
-position = Vector2(-42.0833, -98)
+position = Vector2(-23, -98)
 
 [node name="MagOutPos" type="Marker2D" parent="EagleShop/Board/Markers"]
 unique_name_in_owner = true
-position = Vector2(-19.0833, -91)
+position = Vector2(0, -91)
 
 [node name="Bullet1Pos" type="Marker2D" parent="EagleShop/Board/Markers"]
 unique_name_in_owner = true
-position = Vector2(88.0833, -88)
+position = Vector2(103, -88)
 
 [node name="Bullet2Pos" type="Marker2D" parent="EagleShop/Board/Markers"]
 unique_name_in_owner = true
-position = Vector2(88.0833, -95)
+position = Vector2(103, -95)
 
 [node name="BulletOutPos" type="Marker2D" parent="EagleShop/Board/Markers"]
 unique_name_in_owner = true
-position = Vector2(88.0833, -91)
+position = Vector2(103, -91)
 
 [node name="Lens1Pos" type="Marker2D" parent="EagleShop/Board/Markers"]
 unique_name_in_owner = true
-position = Vector2(-19.0833, -25)
+position = Vector2(0, -25)
 
 [node name="Lens2Pos" type="Marker2D" parent="EagleShop/Board/Markers"]
 unique_name_in_owner = true
-position = Vector2(-19.0833, -31)
+position = Vector2(0, -31)
 
 [node name="LensOutPos" type="Marker2D" parent="EagleShop/Board/Markers"]
 unique_name_in_owner = true
-position = Vector2(-19.0833, -31)
+position = Vector2(0, -31)
 
 [node name="MedPos" type="Marker2D" parent="EagleShop/Board/Markers"]
 unique_name_in_owner = true
-position = Vector2(72.0833, -37)
+position = Vector2(87, -37)
 
 [node name="MedOutPos" type="Marker2D" parent="EagleShop/Board/Markers"]
 unique_name_in_owner = true
-position = Vector2(88.0833, -31)
+position = Vector2(103, -31)
 
 [node name="FeatherCount" type="Node2D" parent="EagleShop"]
 position = Vector2(40, 688)
@@ -341,7 +410,26 @@ theme_override_fonts/font = ExtResource("13_k4xu2")
 theme_override_font_sizes/font_size = 40
 vertical_alignment = 1
 
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[node name="Button" type="Button" parent="EagleShop"]
+offset_left = 263.0
+offset_top = 727.0
+offset_right = 379.0
+offset_bottom = 792.0
+text = "continue"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0ofk4")
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -100
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
 [connection signal="mouse_entered" from="EagleShop/Board/Mag" to="." method="_on_mag_mouse_entered"]
 [connection signal="mouse_exited" from="EagleShop/Board/Mag" to="." method="_on_mag_mouse_exited"]
 [connection signal="pressed" from="EagleShop/Board/Mag" to="." method="_on_mag_pressed"]
@@ -354,3 +442,5 @@ vertical_alignment = 1
 [connection signal="mouse_entered" from="EagleShop/Board/Medkit" to="." method="_on_medkit_mouse_entered"]
 [connection signal="mouse_exited" from="EagleShop/Board/Medkit" to="." method="_on_medkit_mouse_exited"]
 [connection signal="pressed" from="EagleShop/Board/Medkit" to="." method="_on_medkit_pressed"]
+[connection signal="pressed" from="EagleShop/Button" to="." method="_on_button_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
