@@ -1,11 +1,11 @@
 extends Node
 
 var player_hp : int = 3
-var feathers : int
+var feathers : int = 50
 var night : int = 1 # this is the level, or wave, or whatever
-var bullet_damage : int
+var bullet_damage : int = 1
 var fire_rate : int = 1
-var flashlight : int
+var flashlight : int = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,11 +17,14 @@ func _process(delta):
     pass
     
     
-func upgrade(upgrade_name : String, upgrade_level : int):
+func upgrade(upgrade_name : String):
     match upgrade_name:
         "flashlight":
-            flashlight = upgrade_level
+            if flashlight < 3:
+                flashlight = flashlight + 1
         "bullet_damage":
-            bullet_damage = upgrade_level
+            if bullet_damage < 3:
+                bullet_damage = bullet_damage + 1
         "fire_rate":
-            fire_rate = upgrade_level
+            if fire_rate < 3:
+                fire_rate = fire_rate + 1
