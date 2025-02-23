@@ -22,5 +22,5 @@ func _on_body_entered(body):
     if (body.is_in_group("enemies")):
         body.hp = body.hp - bullet_damage
         if (body.hp <= 0):
-            body.die(true)
+            body.call_deferred("die", true)
     queue_free()
