@@ -13,11 +13,9 @@ var is_dying : bool = false
 var is_dead : bool = false
 var can_shoot : bool = true
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
     pass
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -27,9 +25,7 @@ func _physics_process(delta):
             shoot()
         move(delta)
         move_and_slide()
-        
     animate()
-
 
 func move(delta):
     input_vector = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
@@ -40,7 +36,6 @@ func move(delta):
     else:
         is_moving = false
         
-
 func shoot():
     is_shooting = true
     can_shoot = false
@@ -50,10 +45,11 @@ func shoot():
     bullet_spawn.rotation = $BulletOrigin.global_rotation
     bullet_spawn.direction = (get_global_mouse_position() - global_position).normalized()
     get_tree().current_scene.add_child(bullet_spawn)
-    await get_tree().create_timer(1 / GameState.fire_rate).timeout
+    await get_tree().create_timer(.5 / GameState.fire_rate).timeout
     can_shoot = true
-    
-    
+    if (Input.is_action_pressed("shoot") and can_shoot):
+            shoot()
+
 func take_damage(damage : int):
     GameState.player_hp = GameState.player_hp - damage
     health_changed.emit()
@@ -61,16 +57,13 @@ func take_damage(damage : int):
         die()
     else:
         is_hurt = true
-        
 
 func die():
     is_dying = true
 
-
 func _on_area_2d_body_entered(body):
     if body.is_in_group("enemies"):
         take_damage(1)
-        
 
 func animate():
     if is_dead:
@@ -86,14 +79,12 @@ func animate():
         $AnimatedSpriteTop.play("walk")
     else:
         $AnimatedSpriteTop.play("idle")
-    
     if is_moving:
         $AnimatedSpriteBottom.look_at(position + input_vector)
         $AnimatedSpriteBottom.play("walk")
     else:
         $AnimatedSpriteBottom.look_at(get_global_mouse_position())
         $AnimatedSpriteBottom.stop()
-
 
 func _on_animation_finished():
     match $AnimatedSpriteTop.animation:

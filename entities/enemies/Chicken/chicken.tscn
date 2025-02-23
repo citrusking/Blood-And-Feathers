@@ -1,14 +1,18 @@
-[gd_scene load_steps=15 format=3 uid="uid://bwxibb6t4hdlo"]
+[gd_scene load_steps=19 format=3 uid="uid://bwxibb6t4hdlo"]
 
 [ext_resource type="Script" path="res://entities/enemies/Chicken/chicken.gd" id="1_0psqm"]
 [ext_resource type="PackedScene" uid="uid://dw1dwmoh8wykv" path="res://entities/other/feather/feather.tscn" id="2_phub4"]
+[ext_resource type="Shader" path="res://entities/enemies/enemyflash.gdshader" id="3_umngk"]
 [ext_resource type="Texture2D" uid="uid://cb8rr03iudmrp" path="res://assets/chicken_sheet.png" id="3_ypp2e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ffb6l"]
 radius = 15.0
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dumv3"]
-light_mode = 2
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ixif"]
+resource_local_to_scene = true
+shader = ExtResource("3_umngk")
+shader_parameter/flash_color = null
+shader_parameter/flash_value = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3crko"]
 atlas = ExtResource("3_ypp2e")
@@ -79,6 +83,43 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Animation" id="Animation_oe03p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ytjfi"]
+resource_name = "white_flash"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s12x8"]
+_data = {
+"RESET": SubResource("Animation_oe03p"),
+"white_flash": SubResource("Animation_ytjfi")
+}
+
 [node name="Chicken" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 4
 collision_mask = 3
@@ -92,9 +133,14 @@ shape = SubResource("CircleShape2D_ffb6l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-material = SubResource("CanvasItemMaterial_dumv3")
+material = SubResource("ShaderMaterial_1ixif")
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_3bwn7")
 animation = &"walk"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_s12x8")
+}
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
