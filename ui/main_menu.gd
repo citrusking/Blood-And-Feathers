@@ -7,6 +7,7 @@ var playPressed = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
     $SceneTransition/ColorRect.color.a = 0
+    $Cut.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,6 +34,8 @@ func _on_title_sequence_animation_finished():
 func _on_play_button_pressed():
     if !playPressed:
         playPressed = true
+        $AnimationPlayer.play("cutscene")
+        await $AnimationPlayer.animation_finished
         $SceneTransition/AnimationPlayer.play("fade_to_black")
         await $SceneTransition/AnimationPlayer.animation_finished
         get_tree().change_scene_to_file("res://scenes/combat_map.tscn")

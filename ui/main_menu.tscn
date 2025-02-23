@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dm7mingx0wlik"]
+[gd_scene load_steps=32 format=3 uid="uid://dm7mingx0wlik"]
 
 [ext_resource type="Script" path="res://ui/main_menu.gd" id="1_0au8i"]
 [ext_resource type="Texture2D" uid="uid://dqlq7mn71767f" path="res://assets/title_sequence_sheet.png" id="1_hbgjf"]
@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://b8b6xsjt3n1tf" path="res://assets/button_pressed.png" id="5_03r4r"]
 [ext_resource type="Texture2D" uid="uid://bwd6m2oqixkac" path="res://assets/main_menu_splash.png" id="6_wm6g8"]
 [ext_resource type="PackedScene" uid="uid://ctgvblrwc7o3h" path="res://ui/scene_transition.tscn" id="7_oc0jv"]
+[ext_resource type="Texture2D" uid="uid://bot6j4d5rbji0" path="res://assets/cutscene1.png" id="8_0tsxk"]
+[ext_resource type="Texture2D" uid="uid://bfktikygxmuo0" path="res://assets/cutscene2.png" id="9_q0vqt"]
+[ext_resource type="Texture2D" uid="uid://cnl0v21pb7pi" path="res://assets/cutscene3.png" id="10_6rolu"]
+[ext_resource type="Texture2D" uid="uid://kqcau6ob20qe" path="res://assets/cutscene4.png" id="11_p51ho"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v8wrd"]
 atlas = ExtResource("1_hbgjf")
@@ -143,6 +147,66 @@ tracks/2/keys = {
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cut:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cut/Cut1:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Cut/Cut2:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Cut/Cut3:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Cut/Cut4:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_ngt2d"]
 resource_name = "fade_to_black"
@@ -201,9 +265,74 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.5, 1)
 }
 
+[sub_resource type="Animation" id="Animation_ornq4"]
+resource_name = "cutscene"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cut:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cut/Cut1:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cut/Cut2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cut/Cut3:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cut/Cut4:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cgk67"]
 _data = {
 "RESET": SubResource("Animation_ac3m5"),
+"cutscene": SubResource("Animation_ornq4"),
 "fade_to_black": SubResource("Animation_ngt2d"),
 "flashing_text": SubResource("Animation_faqqr"),
 "text_select": SubResource("Animation_b4ms5")
@@ -316,6 +445,33 @@ scale = Vector2(2.4, 2.4)
 texture = ExtResource("6_wm6g8")
 
 [node name="SceneTransition" parent="." instance=ExtResource("7_oc0jv")]
+visible = false
+
+[node name="Cut" type="Node2D" parent="."]
+
+[node name="Cut1" type="Sprite2D" parent="Cut"]
+z_index = 55
+position = Vector2(576, 324)
+scale = Vector2(2.4, 2.4)
+texture = ExtResource("8_0tsxk")
+
+[node name="Cut2" type="Sprite2D" parent="Cut"]
+z_index = 54
+position = Vector2(576, 324)
+scale = Vector2(2.4, 2.4)
+texture = ExtResource("9_q0vqt")
+
+[node name="Cut3" type="Sprite2D" parent="Cut"]
+z_index = 53
+position = Vector2(576, 324)
+scale = Vector2(2.4, 2.4)
+texture = ExtResource("10_6rolu")
+
+[node name="Cut4" type="Sprite2D" parent="Cut"]
+z_index = 52
+position = Vector2(576, 324)
+scale = Vector2(2.4, 2.4)
+texture = ExtResource("11_p51ho")
 
 [connection signal="animation_finished" from="TitleSequence" to="." method="_on_title_sequence_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
