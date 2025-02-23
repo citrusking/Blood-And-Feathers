@@ -1,0 +1,311 @@
+[gd_scene load_steps=24 format=3 uid="uid://bp44qq618h3gj"]
+
+[ext_resource type="Script" path="res://ui/main_menu.gd" id="1_0au8i"]
+[ext_resource type="Texture2D" uid="uid://dqlq7mn71767f" path="res://assets/title_sequence_sheet.png" id="1_hbgjf"]
+[ext_resource type="FontFile" uid="uid://ck0koyd3diw3n" path="res://assets/baftla_font_white.png" id="3_pjwut"]
+[ext_resource type="Texture2D" uid="uid://n5h0qm22gbey" path="res://assets/button_normal.png" id="4_7pfn7"]
+[ext_resource type="Texture2D" uid="uid://b8b6xsjt3n1tf" path="res://assets/button_pressed.png" id="5_03r4r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8wrd"]
+atlas = ExtResource("1_hbgjf")
+region = Rect2(0, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8liy"]
+atlas = ExtResource("1_hbgjf")
+region = Rect2(480, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_joiu5"]
+atlas = ExtResource("1_hbgjf")
+region = Rect2(960, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6vxh"]
+atlas = ExtResource("1_hbgjf")
+region = Rect2(1440, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cllro"]
+atlas = ExtResource("1_hbgjf")
+region = Rect2(1920, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73so1"]
+atlas = ExtResource("1_hbgjf")
+region = Rect2(2400, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_suv1a"]
+atlas = ExtResource("1_hbgjf")
+region = Rect2(2880, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igvm8"]
+atlas = ExtResource("1_hbgjf")
+region = Rect2(3360, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inybi"]
+atlas = ExtResource("1_hbgjf")
+region = Rect2(3840, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hoo8x"]
+atlas = ExtResource("1_hbgjf")
+region = Rect2(4320, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnthu"]
+atlas = ExtResource("1_hbgjf")
+region = Rect2(4800, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3f3qk"]
+atlas = ExtResource("1_hbgjf")
+region = Rect2(5280, 0, 480, 270)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4inox"]
+atlas = ExtResource("1_hbgjf")
+region = Rect2(5760, 0, 480, 270)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mifkj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8wrd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8liy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joiu5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6vxh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cllro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73so1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_suv1a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igvm8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inybi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hoo8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jnthu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3f3qk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4inox")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_faqqr"]
+resource_name = "flashing_text"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TitleSequence/Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_ac3m5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TitleSequence/Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TitleSequence/Label:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TitleSequence/Label:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_b4ms5"]
+resource_name = "text_select"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TitleSequence/Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TitleSequence/Label:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TitleSequence/Label:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.2, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cgk67"]
+_data = {
+"RESET": SubResource("Animation_ac3m5"),
+"flashing_text": SubResource("Animation_faqqr"),
+"text_select": SubResource("Animation_b4ms5")
+}
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_0au8i")
+
+[node name="TitleSequence" type="AnimatedSprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(576, 324)
+scale = Vector2(2.4, 2.4)
+sprite_frames = SubResource("SpriteFrames_mifkj")
+autoplay = "default"
+frame = 12
+frame_progress = 1.0
+
+[node name="Label" type="Label" parent="TitleSequence"]
+visible = false
+offset_left = -240.0
+offset_top = 113.417
+offset_right = 240.0
+offset_bottom = 131.417
+pivot_offset = Vector2(240, 9.11565)
+theme_override_fonts/font = ExtResource("3_pjwut")
+theme_override_font_sizes/font_size = 18
+text = "Press Any Key To Start"
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="TitleSequence"]
+z_index = -1
+offset_left = -240.0
+offset_top = -135.0
+offset_right = 240.0
+offset_bottom = 135.0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cgk67")
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+z_index = -5
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 300
+theme_override_constants/margin_right = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="PlayButton" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+texture_normal = ExtResource("4_7pfn7")
+texture_pressed = ExtResource("5_03r4r")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/PlayButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -38.5
+offset_right = 130.0
+offset_bottom = 26.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_pjwut")
+theme_override_font_sizes/font_size = 65
+text = "play"
+
+[node name="SettingsButton" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+texture_normal = ExtResource("4_7pfn7")
+texture_pressed = ExtResource("5_03r4r")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/SettingsButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -38.5
+offset_right = 130.0
+offset_bottom = 26.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_pjwut")
+theme_override_font_sizes/font_size = 65
+text = "settings"
+
+[connection signal="animation_finished" from="TitleSequence" to="." method="_on_title_sequence_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

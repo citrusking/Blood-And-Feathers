@@ -1,0 +1,25 @@
+[remap]
+
+importer="font_data_image"
+type="FontFile"
+uid="uid://ck0koyd3diw3n"
+path="res://.godot/imported/baftla_font_white.png-39c2fc7479eddd863af0b4cf2080630f.fontdata"
+
+[deps]
+
+source_file="res://assets/baftla_font_white.png"
+dest_files=["res://.godot/imported/baftla_font_white.png-39c2fc7479eddd863af0b4cf2080630f.fontdata"]
+
+[params]
+
+character_ranges=PackedStringArray("0-127")
+kerning_pairs=PackedStringArray()
+columns=16
+rows=8
+image_margin=Rect2i(0, 0, 0, 0)
+character_margin=Rect2i(0, 0, 0, 0)
+ascent=0
+descent=0
+fallbacks=[]
+compress=true
+scaling_mode=2

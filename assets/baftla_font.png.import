@@ -2,19 +2,20 @@
 
 importer="font_data_image"
 type="FontFile"
-uid="uid://di3kjyjmypcuw"
-valid=false
+uid="uid://dro1piuuy38xe"
+path="res://.godot/imported/baftla_font.png-48ec1d441fc0613b16daf2d3760ed044.fontdata"
 
 [deps]
 
-source_file="res://assets/BAFTLA.png"
+source_file="res://assets/baftla_font.png"
+dest_files=["res://.godot/imported/baftla_font.png-48ec1d441fc0613b16daf2d3760ed044.fontdata"]
 
 [params]
 
 character_ranges=PackedStringArray("0-127")
 kerning_pairs=PackedStringArray()
-columns=15
-rows=7
+columns=16
+rows=8
 image_margin=Rect2i(0, 0, 0, 0)
 character_margin=Rect2i(0, 0, 0, 0)
 ascent=0
