@@ -14,7 +14,7 @@ func _physics_process(delta):
 	if !is_dying:
 		if (player_node != null):
 			velocity = (player_node.global_position - global_position).normalized() * speed * delta
-		look_at(player_node.global_position)
+			look_at(player_node.global_position)
 		move_and_slide()
 	
 func die(feather_drop : bool):

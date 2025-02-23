@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bpoiq6agkq6a5"]
+[gd_scene load_steps=23 format=3 uid="uid://bpoiq6agkq6a5"]
 
 [ext_resource type="Script" path="res://entities/enemies/Budgie/budgie.gd" id="1_mx2u3"]
 [ext_resource type="Texture2D" uid="uid://dwdujwuxwk6ix" path="res://assets/budgie_sheet.png" id="2_jkr37"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ffb6l"]
 radius = 24.1868
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vf2ry"]
+light_mode = 2
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kd1ju"]
 atlas = ExtResource("2_jkr37")
@@ -138,13 +141,14 @@ collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_mx2u3")
 feather_scene = ExtResource("2_q2o4o")
-speed = 2000
+speed = 4000
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ffb6l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+material = SubResource("CanvasItemMaterial_vf2ry")
 sprite_frames = SubResource("SpriteFrames_3bwn7")
 animation = &"walk"
 

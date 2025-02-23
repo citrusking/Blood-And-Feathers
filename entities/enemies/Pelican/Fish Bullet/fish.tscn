@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://bustr66pd7ub5"]
+
+[ext_resource type="Script" path="res://entities/enemies/Pelican/Fish Bullet/fish.gd" id="1_nethe"]
+[ext_resource type="Texture2D" uid="uid://cdil41v8jbeb5" path="res://assets/pelican_sheet.png" id="2_yq5cn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tu08a"]
+size = Vector2(12, 5)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_d1rxa"]
+light_mode = 2
+
+[node name="Fish" type="Area2D"]
+z_index = -1
+texture_filter = 1
+collision_layer = 2
+collision_mask = 10
+script = ExtResource("1_nethe")
+bullet_speed = 100
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_tu08a")
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_d1rxa")
+texture = ExtResource("2_yq5cn")
+region_enabled = true
+region_rect = Rect2(0, 192, 64, 64)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]
