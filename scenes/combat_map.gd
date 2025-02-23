@@ -5,7 +5,6 @@ extends Node2D
 @export var pelican : PackedScene
 @export var egg : PackedScene
 
-@export var shop_scene : PackedScene
 
 var enemyArray
 var eggnum : int = 2
@@ -90,4 +89,4 @@ func updateNestCounter():
 
 func _on_hud_change_scene():
     get_tree().paused = false
-    get_tree().change_scene_to_packed(shop_scene)
+    get_tree().change_scene_to_file("res://ui/shop.tscn")

@@ -2,8 +2,6 @@ extends Node2D
 
 signal shop_closing
 
-@export var combat_scene : PackedScene
-
 @export var mag1 : Texture2D
 @export var bullet1 : Texture2D
 @export var lens1 : Texture2D
@@ -214,4 +212,4 @@ func _on_button_pressed():
     $SceneTransition/AnimationPlayer.play("fade_to_black")
     await $SceneTransition/AnimationPlayer.animation_finished
     
-    get_tree().change_scene_to_packed(combat_scene)
+    get_tree().change_scene_to_file("res://scenes/combat_map.tscn")

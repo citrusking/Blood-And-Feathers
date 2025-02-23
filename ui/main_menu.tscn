@@ -1,8 +1,7 @@
-[gd_scene load_steps=28 format=3 uid="uid://dm7mingx0wlik"]
+[gd_scene load_steps=27 format=3 uid="uid://dm7mingx0wlik"]
 
 [ext_resource type="Script" path="res://ui/main_menu.gd" id="1_0au8i"]
 [ext_resource type="Texture2D" uid="uid://dqlq7mn71767f" path="res://assets/title_sequence_sheet.png" id="1_hbgjf"]
-[ext_resource type="PackedScene" uid="uid://e02jvyl6w3fx" path="res://scenes/combat_map.tscn" id="2_g83y4"]
 [ext_resource type="FontFile" uid="uid://ck0koyd3diw3n" path="res://assets/baftla_font_white.png" id="3_pjwut"]
 [ext_resource type="Texture2D" uid="uid://n5h0qm22gbey" path="res://assets/button_normal.png" id="4_7pfn7"]
 [ext_resource type="Texture2D" uid="uid://b8b6xsjt3n1tf" path="res://assets/button_pressed.png" id="5_03r4r"]
@@ -214,7 +213,6 @@ _data = {
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_0au8i")
-combat_scene = ExtResource("2_g83y4")
 
 [node name="TitleSequence" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

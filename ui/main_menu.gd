@@ -1,6 +1,5 @@
 extends Control
 
-@export var combat_scene : PackedScene
 var accept_input = false
 var key_pressed = false
 
@@ -33,7 +32,7 @@ func _on_title_sequence_animation_finished():
 func _on_play_button_pressed():
     $SceneTransition/AnimationPlayer.play("fade_to_black")
     await $SceneTransition/AnimationPlayer.animation_finished
-    get_tree().change_scene_to_packed(combat_scene)
+    get_tree().change_scene_to_file("res://scenes/combat_map.tscn")
 
 
 func _on_quit_button_pressed():

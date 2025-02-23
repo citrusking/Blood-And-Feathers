@@ -1,8 +1,7 @@
-[gd_scene load_steps=33 format=3 uid="uid://bxir00ch21oll"]
+[gd_scene load_steps=32 format=3 uid="uid://bxir00ch21oll"]
 
 [ext_resource type="Script" path="res://ui/shop.gd" id="1_o083l"]
 [ext_resource type="Texture2D" uid="uid://b3jxkhhr72xgn" path="res://assets/shop/shop_bg.png" id="1_xiciu"]
-[ext_resource type="PackedScene" uid="uid://e02jvyl6w3fx" path="res://scenes/combat_map.tscn" id="2_52hne"]
 [ext_resource type="Texture2D" uid="uid://b7u0scn3cer0r" path="res://assets/shop/shop_eagle.png" id="4_ukas6"]
 [ext_resource type="Texture2D" uid="uid://cs3mbqxh6uvht" path="res://assets/shop/shop_board.png" id="5_ar80p"]
 [ext_resource type="Texture2D" uid="uid://bqa1dhjilatwb" path="res://assets/shop/shop_mag2.png" id="5_bsrn8"]
@@ -273,7 +272,6 @@ _data = {
 
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_o083l")
-combat_scene = ExtResource("2_52hne")
 mag1 = ExtResource("6_dyk5c")
 bullet1 = ExtResource("7_ba8oh")
 lens1 = ExtResource("8_god3s")
