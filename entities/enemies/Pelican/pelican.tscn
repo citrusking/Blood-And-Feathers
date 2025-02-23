@@ -1,9 +1,8 @@
-[gd_scene load_steps=41 format=3 uid="uid://bdmrnp3vkb5q2"]
+[gd_scene load_steps=32 format=3 uid="uid://bdmrnp3vkb5q2"]
 
 [ext_resource type="Script" path="res://entities/enemies/Pelican/pelican.gd" id="1_3c7qj"]
 [ext_resource type="PackedScene" uid="uid://bustr66pd7ub5" path="res://entities/enemies/Pelican/Fish Bullet/fish.tscn" id="2_c4srk"]
 [ext_resource type="PackedScene" uid="uid://dw1dwmoh8wykv" path="res://entities/other/feather/feather.tscn" id="2_o5wwu"]
-[ext_resource type="Texture2D" uid="uid://cgk7ev8ilounb" path="res://assets/pelican_sheet.png" id="4_f2yjp"]
 [ext_resource type="Shader" path="res://entities/enemies/enemyflash.gdshader" id="4_fvdxm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ffb6l"]
@@ -48,38 +47,6 @@ region = Rect2(384, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0mji0"]
 atlas = SubResource("CompressedTexture2D_jnm7k")
-region = Rect2(448, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y6vm3"]
-atlas = ExtResource("4_f2yjp")
-region = Rect2(0, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eobul"]
-atlas = ExtResource("4_f2yjp")
-region = Rect2(64, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0a3tq"]
-atlas = ExtResource("4_f2yjp")
-region = Rect2(128, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_arnx4"]
-atlas = ExtResource("4_f2yjp")
-region = Rect2(192, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wq7y6"]
-atlas = ExtResource("4_f2yjp")
-region = Rect2(256, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w8cxv"]
-atlas = ExtResource("4_f2yjp")
-region = Rect2(320, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e0buq"]
-atlas = ExtResource("4_f2yjp")
-region = Rect2(384, 128, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lbm7w"]
-atlas = ExtResource("4_f2yjp")
 region = Rect2(448, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s6vr3"]
@@ -156,30 +123,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0mji0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y6vm3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eobul")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0a3tq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_arnx4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wq7y6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w8cxv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e0buq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lbm7w")
 }],
 "loop": false,
 "name": &"die",

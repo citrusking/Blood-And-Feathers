@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=3 uid="uid://l2bi7ue4fgk4"]
+[gd_scene load_steps=121 format=3 uid="uid://l2bi7ue4fgk4"]
 
 [ext_resource type="Texture2D" uid="uid://b48niy8g0p7fy" path="res://assets/health_ui_sheet.png" id="1_05uuv"]
 [ext_resource type="Script" path="res://ui/hud.gd" id="1_chu5o"]
@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://c0wa6dct5w4g0" path="res://assets/clock.png" id="4_3y2e5"]
 [ext_resource type="FontFile" uid="uid://ck0koyd3diw3n" path="res://assets/baftla_font_white.png" id="5_o01tl"]
 [ext_resource type="Texture2D" uid="uid://i6xm5gu463hg" path="res://assets/feather_sheet.png" id="6_fv38r"]
+[ext_resource type="Texture2D" uid="uid://b3jxkhhr72xgn" path="res://assets/shop/shop_bg.png" id="8_02qqu"]
+[ext_resource type="Texture2D" uid="uid://b6t77s0skskbk" path="res://assets/tutorial_sprite.png" id="9_qvtbj"]
+[ext_resource type="Texture2D" uid="uid://bucm4ob6wviio" path="res://assets/GameOver.png" id="10_gamnh"]
+[ext_resource type="Texture2D" uid="uid://cms5g7n7jcm0x" path="res://assets/cursor_hand_sheet.png" id="10_xpf5o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dtl72"]
 atlas = ExtResource("2_y8ryr")
@@ -302,6 +306,22 @@ region = Rect2(2592, 96, 144, 96)
 atlas = SubResource("CompressedTexture2D_c5eba")
 region = Rect2(2736, 96, 144, 96)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_266ly"]
+atlas = ExtResource("1_05uuv")
+region = Rect2(0, 480, 144, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74g21"]
+atlas = ExtResource("1_05uuv")
+region = Rect2(144, 480, 144, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1o1be"]
+atlas = ExtResource("1_05uuv")
+region = Rect2(288, 480, 144, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2v63q"]
+atlas = ExtResource("1_05uuv")
+region = Rect2(432, 480, 144, 96)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_o36l2"]
 atlas = SubResource("CompressedTexture2D_c5eba")
 region = Rect2(0, 0, 144, 96)
@@ -381,6 +401,22 @@ region = Rect2(2592, 0, 144, 96)
 [sub_resource type="AtlasTexture" id="AtlasTexture_3ptrm"]
 atlas = SubResource("CompressedTexture2D_c5eba")
 region = Rect2(2736, 0, 144, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rl12u"]
+atlas = ExtResource("1_05uuv")
+region = Rect2(0, 384, 144, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1yfl"]
+atlas = ExtResource("1_05uuv")
+region = Rect2(144, 384, 144, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uq1ae"]
+atlas = ExtResource("1_05uuv")
+region = Rect2(288, 384, 144, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kcxu"]
+atlas = ExtResource("1_05uuv")
+region = Rect2(432, 384, 144, 96)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vqbjs"]
 animations = [{
@@ -539,6 +575,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_266ly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74g21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1o1be")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2v63q")
+}],
+"loop": false,
+"name": &"2to1",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_o36l2")
 }, {
 "duration": 1.0,
@@ -600,6 +653,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"3hp",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rl12u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1yfl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uq1ae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1kcxu")
+}],
+"loop": false,
+"name": &"3to2",
 "speed": 10.0
 }]
 
@@ -703,6 +773,73 @@ animations = [{
 "speed": 1.0
 }]
 
+[sub_resource type="Animation" id="Animation_20ko1"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cufny"]
+length = 0.001
+step = 0.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../GameOverScreen:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6ldf7"]
+resource_name = "GameOver"
+length = 3.0
+step = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../GameOverScreen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vpp4k"]
+_data = {
+"GameOver": SubResource("Animation_6ldf7"),
+"RESET": SubResource("Animation_cufny"),
+"default": SubResource("Animation_20ko1")
+}
+
 [node name="HUD" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_chu5o")
@@ -712,6 +849,7 @@ process_mode = 1
 
 [node name="Cursor" type="AnimatedSprite2D" parent="CursorTracker"]
 process_mode = 1
+scale = Vector2(2.4, 2.4)
 sprite_frames = SubResource("SpriteFrames_x1r5j")
 
 [node name="Feathers" type="AnimatedSprite2D" parent="."]
@@ -768,15 +906,55 @@ offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 0.74902)
 
+[node name="Button" type="Button" parent="PauseScreen"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
 [node name="Label" type="Label" parent="PauseScreen"]
 layout_mode = 0
 offset_right = 1151.0
 offset_bottom = 648.0
 theme_override_fonts/font = ExtResource("5_o01tl")
 theme_override_font_sizes/font_size = 50
-text = "Press ESC
-to continue"
+text = "GAME PAUSED"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TutorialBG" type="Sprite2D" parent="."]
+process_mode = 3
+position = Vector2(577, 325)
+scale = Vector2(2.4, 2.4)
+texture = ExtResource("8_02qqu")
+
+[node name="Tutorial" type="Sprite2D" parent="TutorialBG"]
+process_mode = 3
+texture = ExtResource("9_qvtbj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TutorialBG"]
+libraries = {
+"": SubResource("AnimationLibrary_vpp4k")
+}
+
+[node name="GameOverScreen" type="Sprite2D" parent="."]
+process_mode = 3
+position = Vector2(577, 325)
+scale = Vector2(2.4, 2.4)
+texture = ExtResource("10_gamnh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameOverScreen"]
+libraries = {
+"": SubResource("AnimationLibrary_vpp4k")
+}
+
+[node name="CursorTracker2" type="Node2D" parent="."]
+process_mode = 1
+scale = Vector2(2.4, 2.4)
+
+[node name="Sprite2D" type="Sprite2D" parent="CursorTracker2"]
+texture = ExtResource("10_xpf5o")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
 [connection signal="animation_finished" from="HealthIndicator" to="." method="_on_health_indicator_animation_finished"]
+[connection signal="button_down" from="PauseScreen/Button" to="." method="_on_button_button_down"]

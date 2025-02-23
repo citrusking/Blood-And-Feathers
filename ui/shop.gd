@@ -38,12 +38,14 @@ func populate():
             %Bullet.texture_normal = bullet1
             %Bullet.position = %Bullet1Pos.position
             bul_cost = 10
-            bul_msg = "$" + str(bul_cost) + ": upgrade damage"
+            #bul_msg = "$" + str(bul_cost) + ": damage up"
+            bul_msg = "damage up"
         2:
             %Bullet.texture_normal = bullet2
             %Bullet.position = %Bullet2Pos.position
             bul_cost = 20
-            bul_msg = "$" + str(bul_cost) + ": upgrade damage"
+            #bul_msg = "$" + str(bul_cost) + ": damage up"
+            bul_msg = "damage up"
         3:
             %Bullet.texture_normal = out
             %Bullet.position = %BulletOutPos.position
@@ -54,12 +56,14 @@ func populate():
             %Mag.texture_normal = mag1
             %Mag.position = %Mag1Pos.position
             mag_cost = 10
-            mag_msg = "$" + str(mag_cost) + ": upgrade fire rate"
+            #mag_msg = "$" + str(mag_cost) + ": fire rate up"
+            mag_msg = "fire rate up"
         2:
             %Mag.texture_normal = mag2
             %Mag.position = %Mag2Pos.position
             mag_cost = 20
-            mag_msg = "$" + str(mag_cost) + ": upgrade fire rate"
+            #mag_msg = "$" + str(mag_cost) + ": fire rate up"
+            mag_msg = "fire rate up"
         3:
             %Mag.texture_normal = out
             %Mag.position = %MagOutPos.position
@@ -70,12 +74,14 @@ func populate():
             %Lens.texture_normal = lens1
             %Lens.position = %Lens1Pos.position
             len_cost = 10
-            len_msg = "$" + str(len_cost) + ": upgrade light"
+            #len_msg = "$" + str(len_cost) + ": flash up"
+            len_msg = "flash up"
         2:
             %Lens.texture_normal = lens2
             %Lens.position = %Lens2Pos.position
             len_cost = 20
-            len_msg = "$" + str(len_cost) + ": upgrade light"
+            #len_msg = "$" + str(len_cost) + ": flash up"
+            len_msg = "flash up"
         3:
             %Lens.texture_normal = out
             %Lens.position = %LensOutPos.position
@@ -86,12 +92,14 @@ func populate():
             %Medkit.texture_normal = medkit
             %Medkit.position = %MedPos.position
             med_cost = 10
-            med_msg = "$" + str(med_cost) + ": recover health"
+            #med_msg = "$" + str(med_cost) + ": recover health"
+            med_msg = "gain 2 health"
         2:
             %Medkit.texture_normal = medkit
             %Medkit.position = %MedPos.position
             med_cost = 5
-            med_msg = "$" + str(med_cost) + ": recover health"
+            #med_msg = "$" + str(med_cost) + ": recover health"
+            med_msg = "gain 1 health"
         3:
             %Medkit.texture_normal = out
             %Medkit.position = %MedOutPos.position
@@ -143,7 +151,7 @@ func _on_mag_pressed():
         populate()
         %Description.text = mag_msg
     else:
-        %Description.text = "not enough feathers!"
+        %Description.text = "low feathers!"
     print(GameState.fire_rate)
 
 
@@ -154,7 +162,7 @@ func _on_bullet_pressed():
         populate()
         %Description.text = bul_msg
     else:
-        %Description.text = "not enough feathers!"
+        %Description.text = "low feathers!"
     print(GameState.bullet_damage)
 
 
@@ -165,16 +173,16 @@ func _on_lens_pressed():
         populate()
         %Description.text = len_msg
     else:
-        %Description.text = "not enough feathers!"
+        %Description.text = "low feathers!"
     print(GameState.flashlight)
 
 
 func _on_medkit_pressed():
     if GameState.feathers >= med_cost:
         GameState.feathers = GameState.feathers - med_cost
-        GameState.player_hp == 3
+        GameState.player_hp = 3
         populate()
         %Description.text = med_msg
     else:
-        %Description.text = "not enough feathers!"
+        %Description.text = "low feathers!"
     print(GameState.player_hp)

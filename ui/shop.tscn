@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bxir00ch21oll"]
+[gd_scene load_steps=30 format=3 uid="uid://bxir00ch21oll"]
 
 [ext_resource type="Script" path="res://ui/shop.gd" id="1_o083l"]
 [ext_resource type="Texture2D" uid="uid://b3jxkhhr72xgn" path="res://assets/shop/shop_bg.png" id="1_xiciu"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://d1k1f7d2ob3wj" path="res://assets/shop/shop_lens1.png" id="8_god3s"]
 [ext_resource type="Texture2D" uid="uid://bpjgkul2fe6ra" path="res://assets/shop/shop_out.png" id="9_ljado"]
 [ext_resource type="Texture2D" uid="uid://dqh7fknkcfnkf" path="res://assets/shop/shop_medkit.png" id="9_xr72k"]
+[ext_resource type="FontFile" uid="uid://ck0koyd3diw3n" path="res://assets/baftla_font_white.png" id="13_k4xu2"]
 [ext_resource type="Texture2D" uid="uid://i6xm5gu463hg" path="res://assets/feather_sheet.png" id="13_rl36r"]
 
 [sub_resource type="Animation" id="Animation_l77fr"]
@@ -232,33 +233,33 @@ texture = ExtResource("5_ar80p")
 
 [node name="Mag" type="TextureButton" parent="EagleShop/Board"]
 unique_name_in_owner = true
-offset_left = -2.5
+offset_left = -21.5833
 offset_top = -91.0
-offset_right = 93.5
+offset_right = 74.4167
 offset_bottom = -27.0
 texture_normal = ExtResource("9_ljado")
 
 [node name="Bullet" type="TextureButton" parent="EagleShop/Board"]
 unique_name_in_owner = true
-offset_left = 100.5
+offset_left = 85.5833
 offset_top = -91.0
-offset_right = 157.5
+offset_right = 142.583
 offset_bottom = -38.0
 texture_normal = ExtResource("9_ljado")
 
 [node name="Lens" type="TextureButton" parent="EagleShop/Board"]
 unique_name_in_owner = true
-offset_left = -2.5
+offset_left = -21.5833
 offset_top = -31.0
-offset_right = 55.5
+offset_right = 36.4167
 offset_bottom = 26.0
 texture_normal = ExtResource("9_ljado")
 
 [node name="Medkit" type="TextureButton" parent="EagleShop/Board"]
 unique_name_in_owner = true
-offset_left = 100.5
+offset_left = 85.5833
 offset_top = -31.0
-offset_right = 189.5
+offset_right = 174.583
 offset_bottom = 34.0
 texture_normal = ExtResource("9_ljado")
 
@@ -268,7 +269,8 @@ offset_left = -59.5
 offset_top = 33.5
 offset_right = 212.5
 offset_bottom = 58.5
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("13_k4xu2")
+theme_override_font_sizes/font_size = 20
 horizontal_alignment = 1
 clip_text = true
 
@@ -277,52 +279,53 @@ position = Vector2(-2.5, 0)
 
 [node name="Mag1Pos" type="Marker2D" parent="EagleShop/Board/Markers"]
 unique_name_in_owner = true
-position = Vector2(-23, -98)
+position = Vector2(-42.0833, -98)
 
 [node name="Mag2Pos" type="Marker2D" parent="EagleShop/Board/Markers"]
 unique_name_in_owner = true
-position = Vector2(-23, -98)
+position = Vector2(-42.0833, -98)
 
 [node name="MagOutPos" type="Marker2D" parent="EagleShop/Board/Markers"]
 unique_name_in_owner = true
-position = Vector2(0, -91)
+position = Vector2(-19.0833, -91)
 
 [node name="Bullet1Pos" type="Marker2D" parent="EagleShop/Board/Markers"]
 unique_name_in_owner = true
-position = Vector2(103, -88)
+position = Vector2(88.0833, -88)
 
 [node name="Bullet2Pos" type="Marker2D" parent="EagleShop/Board/Markers"]
 unique_name_in_owner = true
-position = Vector2(103, -95)
+position = Vector2(88.0833, -95)
 
 [node name="BulletOutPos" type="Marker2D" parent="EagleShop/Board/Markers"]
 unique_name_in_owner = true
-position = Vector2(103, -91)
+position = Vector2(88.0833, -91)
 
 [node name="Lens1Pos" type="Marker2D" parent="EagleShop/Board/Markers"]
 unique_name_in_owner = true
-position = Vector2(0, -25)
+position = Vector2(-19.0833, -25)
 
 [node name="Lens2Pos" type="Marker2D" parent="EagleShop/Board/Markers"]
 unique_name_in_owner = true
-position = Vector2(0, -31)
+position = Vector2(-19.0833, -31)
 
 [node name="LensOutPos" type="Marker2D" parent="EagleShop/Board/Markers"]
 unique_name_in_owner = true
-position = Vector2(0, -31)
+position = Vector2(-19.0833, -31)
 
 [node name="MedPos" type="Marker2D" parent="EagleShop/Board/Markers"]
 unique_name_in_owner = true
-position = Vector2(87, -37)
+position = Vector2(72.0833, -37)
 
 [node name="MedOutPos" type="Marker2D" parent="EagleShop/Board/Markers"]
 unique_name_in_owner = true
-position = Vector2(103, -31)
+position = Vector2(88.0833, -31)
 
 [node name="FeatherCount" type="Node2D" parent="EagleShop"]
+position = Vector2(40, 688)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="EagleShop/FeatherCount"]
-position = Vector2(544, 785)
+position = Vector2(40, 40)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_sbys5")
 autoplay = "default"
@@ -330,11 +333,13 @@ frame_progress = 0.860406
 
 [node name="FeatherLabel" type="Label" parent="EagleShop/FeatherCount"]
 unique_name_in_owner = true
-offset_left = 448.0
-offset_top = 760.0
+offset_left = 86.0
+offset_top = 10.0
 offset_right = 516.0
-offset_bottom = 815.0
+offset_bottom = 65.0
+theme_override_fonts/font = ExtResource("13_k4xu2")
 theme_override_font_sizes/font_size = 40
+vertical_alignment = 1
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="mouse_entered" from="EagleShop/Board/Mag" to="." method="_on_mag_mouse_entered"]

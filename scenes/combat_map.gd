@@ -27,7 +27,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-    if ($LevelTimer.time_left == 120):
+    if ($LevelTimer.time_left >= 120):
         $HUD/ClockTimer/ClockFace.play("default")
         $HUD/ClockTimer/ClockFace.frame = 0
     
@@ -62,12 +62,13 @@ func _on_player_health_changed():
     if GameState.player_hp == 3:
         $HUD/HealthIndicator.play("3hp")
     elif GameState.player_hp == 2:
-        $HUD/HealthIndicator.play("2hp")
+        $HUD/HealthIndicator.play("3to2")
     elif GameState.player_hp == 1:
-        $HUD/HealthIndicator.play("1hp")
+        $HUD/HealthIndicator.play("2to1")
     elif GameState.player_hp <= 0:
         $HUD/HealthIndicator.play("0hp")
-        #print("GAME OVER")
+        $HUD.gameOver()
+        print("GAME OVER")
 
 func _on_level_timer_timeout():
     print("TIMED OUT")
