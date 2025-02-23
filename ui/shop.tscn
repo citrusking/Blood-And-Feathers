@@ -233,33 +233,33 @@ texture = ExtResource("5_ar80p")
 
 [node name="Mag" type="TextureButton" parent="EagleShop/Board"]
 unique_name_in_owner = true
-offset_left = -21.5833
+offset_left = -6.5833
 offset_top = -91.0
-offset_right = 74.4167
+offset_right = 89.4167
 offset_bottom = -27.0
 texture_normal = ExtResource("9_ljado")
 
 [node name="Bullet" type="TextureButton" parent="EagleShop/Board"]
 unique_name_in_owner = true
-offset_left = 85.5833
+offset_left = 100.583
 offset_top = -91.0
-offset_right = 142.583
+offset_right = 157.583
 offset_bottom = -38.0
 texture_normal = ExtResource("9_ljado")
 
 [node name="Lens" type="TextureButton" parent="EagleShop/Board"]
 unique_name_in_owner = true
-offset_left = -21.5833
+offset_left = -6.5833
 offset_top = -31.0
-offset_right = 36.4167
+offset_right = 51.4167
 offset_bottom = 26.0
 texture_normal = ExtResource("9_ljado")
 
 [node name="Medkit" type="TextureButton" parent="EagleShop/Board"]
 unique_name_in_owner = true
-offset_left = 85.5833
+offset_left = 100.583
 offset_top = -31.0
-offset_right = 174.583
+offset_right = 189.583
 offset_bottom = 34.0
 texture_normal = ExtResource("9_ljado")
 
@@ -275,7 +275,7 @@ horizontal_alignment = 1
 clip_text = true
 
 [node name="Markers" type="Node2D" parent="EagleShop/Board"]
-position = Vector2(-2.5, 0)
+position = Vector2(12.5, 0)
 
 [node name="Mag1Pos" type="Marker2D" parent="EagleShop/Board/Markers"]
 unique_name_in_owner = true

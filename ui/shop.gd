@@ -21,8 +21,8 @@ var med_cost : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    $AnimationPlayer.play("background_slide")
     populate()
+    $AnimationPlayer.play("background_slide")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

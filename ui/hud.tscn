@@ -773,19 +773,21 @@ animations = [{
 "speed": 1.0
 }]
 
-[sub_resource type="Animation" id="Animation_20ko1"]
-resource_name = "default"
+[sub_resource type="Animation" id="Animation_6ldf7"]
+resource_name = "GameOver"
+length = 3.0
+step = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
+tracks/0/path = NodePath("../GameOverScreen:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_cufny"]
@@ -816,21 +818,19 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_6ldf7"]
-resource_name = "GameOver"
-length = 3.0
-step = 2.0
+[sub_resource type="Animation" id="Animation_20ko1"]
+resource_name = "default"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../GameOverScreen:modulate")
+tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2, 3),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vpp4k"]
@@ -923,7 +923,7 @@ vertical_alignment = 1
 
 [node name="TutorialBG" type="Sprite2D" parent="."]
 process_mode = 3
-position = Vector2(577, 325)
+position = Vector2(576, 324)
 scale = Vector2(2.4, 2.4)
 texture = ExtResource("8_02qqu")
 
@@ -938,7 +938,7 @@ libraries = {
 
 [node name="GameOverScreen" type="Sprite2D" parent="."]
 process_mode = 3
-position = Vector2(577, 325)
+position = Vector2(576, 324)
 scale = Vector2(2.4, 2.4)
 texture = ExtResource("10_gamnh")
 
