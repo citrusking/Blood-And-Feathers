@@ -4,6 +4,11 @@ signal health_changed
 @export var bullet_scene : PackedScene
 @export var speed : int
 
+@onready var ouch1 = preload("res://assets/sounds/hurt_1.mp3")
+@onready var ouch2 = preload("res://assets/sounds/hurt_2.mp3")
+@onready var dead = preload("res://assets/sounds/dead_player.mp3")
+@onready var gunshot = preload("res://assets/sounds/pistol-shot.mp3")
+
 var input_vector : Vector2
 
 var is_moving : bool = false
@@ -40,6 +45,9 @@ func shoot():
     is_shooting = true
     can_shoot = false
     $AnimationPlayer.play("muzzle_flash")
+    $SFX/PlayerSFX.stream = gunshot
+    $SFX/PlayerSFX.pitch_scale = randf_range(.85, 1.15)
+    $SFX/PlayerSFX.play()
     var bullet_spawn = bullet_scene.instantiate()
     bullet_spawn.position = $BulletOrigin.global_position
     bullet_spawn.rotation = $BulletOrigin.global_rotation
@@ -47,18 +55,33 @@ func shoot():
     get_tree().current_scene.add_child(bullet_spawn)
     await get_tree().create_timer(.5 / GameState.fire_rate).timeout
     can_shoot = true
-    if (Input.is_action_pressed("shoot") and can_shoot):
+    if !is_dying and !is_dead:
+        if (Input.is_action_pressed("shoot") and can_shoot):
             shoot()
 
 func take_damage(damage : int):
     GameState.player_hp = GameState.player_hp - damage
     health_changed.emit()
     if (GameState.player_hp <= 0):
-        die()
+        if !is_dying:
+            die()
+    elif (GameState.player_hp <= 1):
+        $SFX/HurtSFX.stream = ouch2
+        $SFX/HurtSFX.pitch_scale = 1
+        $SFX/HurtSFX.play()
+    elif (GameState.player_hp <= 2):
+        $SFX/HurtSFX.stream = ouch1
+        $SFX/HurtSFX.pitch_scale = 1
+        $SFX/HurtSFX.play()
     else:
         is_hurt = true
 
 func die():
+    if !is_dying:
+        if $SFX/HurtSFX.stream != dead:
+            $SFX/HurtSFX.stream = dead
+            $SFX/HurtSFX.pitch_scale = 1
+            $SFX/HurtSFX.play()
     is_dying = true
 
 func _on_area_2d_body_entered(body):

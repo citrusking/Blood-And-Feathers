@@ -20,12 +20,16 @@ func _on_body_entered(body):
         if (body.hp > 0):
             body.get_node_or_null("AnimationPlayer").play("white_flash")
         body.hp = body.hp - bullet_damage
+        if (body.hp >= 0):
+            body.hurtAudio()
         if (body.hp <= 0):
             body.call_deferred("die", true)
     if (body.is_in_group("egg")):
         if (body.hp > 0):
             body.get_node_or_null("AnimationPlayer").play("white_flash")
         body.hp -= bullet_damage
+        if (body.hp >= 0):
+            body.hurtAudio()
         if (body.hp <= 0):
             body.call_deferred("die", true)
     queue_free()

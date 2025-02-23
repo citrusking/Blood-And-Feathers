@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bfqlgko5c7vkk"
+path="res://.godot/imported/Beasuce - Acid Dance.mp3-f4ef825fe7c933deb1c6ab7b54b22456.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Beasuce - Acid Dance.mp3"
+dest_files=["res://.godot/imported/Beasuce - Acid Dance.mp3-f4ef825fe7c933deb1c6ab7b54b22456.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
