@@ -10,8 +10,8 @@ var gameOverToggle : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    $AnimationPlayer.play_backwards("fade_to_black")
-    
+    $SceneTransition/ColorRect.color = 255
+    $SceneTransition/AnimationPlayer.play_backwards("fade_to_black")
     if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
         fullscreen = true
     else:
@@ -93,7 +93,6 @@ func gameOver():
     if !gameOverToggle:
         $GameOverScreen.visible = true
         $GameOverScreen/AnimationPlayer.play("GameOver")
-        print($GameOverScreen/AnimationPlayer.assigned_animation)
         gameOverToggle = true
 
 func win_combat():
@@ -101,6 +100,7 @@ func win_combat():
     $AnimationPlayer.play("fade_sunrise")
     await $AnimationPlayer.animation_finished
     await something_pressed
-    $AnimationPlayer.play("fade_to_black")
-    await $AnimationPlayer.animation_finished
+    $SceneTransition/ColorRect.color.a = 0
+    $SceneTransition/AnimationPlayer.play("fade_to_black")
+    await $SceneTransition/AnimationPlayer.animation_finished
     change_scene.emit()

@@ -1,12 +1,13 @@
-[gd_scene load_steps=27 format=3 uid="uid://dm7mingx0wlik"]
+[gd_scene load_steps=28 format=3 uid="uid://dm7mingx0wlik"]
 
 [ext_resource type="Script" path="res://ui/main_menu.gd" id="1_0au8i"]
 [ext_resource type="Texture2D" uid="uid://dqlq7mn71767f" path="res://assets/title_sequence_sheet.png" id="1_hbgjf"]
-[ext_resource type="PackedScene" uid="uid://e02jvyl6w3fx" path="res://scenes/combat_map.tscn" id="2_tailc"]
+[ext_resource type="PackedScene" uid="uid://e02jvyl6w3fx" path="res://scenes/combat_map.tscn" id="2_g83y4"]
 [ext_resource type="FontFile" uid="uid://ck0koyd3diw3n" path="res://assets/baftla_font_white.png" id="3_pjwut"]
 [ext_resource type="Texture2D" uid="uid://n5h0qm22gbey" path="res://assets/button_normal.png" id="4_7pfn7"]
 [ext_resource type="Texture2D" uid="uid://b8b6xsjt3n1tf" path="res://assets/button_pressed.png" id="5_03r4r"]
 [ext_resource type="Texture2D" uid="uid://bwd6m2oqixkac" path="res://assets/main_menu_splash.png" id="6_wm6g8"]
+[ext_resource type="PackedScene" uid="uid://ctgvblrwc7o3h" path="res://ui/scene_transition.tscn" id="7_oc0jv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v8wrd"]
 atlas = ExtResource("1_hbgjf")
@@ -143,50 +144,9 @@ tracks/2/keys = {
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("BlackFade:color:r")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("BlackFade:color:g")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("BlackFade:color:b")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/6/type = "bezier"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("BlackFade:color:a")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
+
+[sub_resource type="Animation" id="Animation_ngt2d"]
+resource_name = "fade_to_black"
 
 [sub_resource type="Animation" id="Animation_faqqr"]
 resource_name = "flashing_text"
@@ -242,53 +202,6 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.5, 1)
 }
 
-[sub_resource type="Animation" id="Animation_ngt2d"]
-resource_name = "fade_to_black"
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BlackFade:color:r")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("BlackFade:color:g")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("BlackFade:color:b")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("BlackFade:color:a")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cgk67"]
 _data = {
 "RESET": SubResource("Animation_ac3m5"),
@@ -301,7 +214,7 @@ _data = {
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_0au8i")
-combat_scene = ExtResource("2_tailc")
+combat_scene = ExtResource("2_g83y4")
 
 [node name="TitleSequence" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -404,13 +317,7 @@ position = Vector2(576, 324)
 scale = Vector2(2.4, 2.4)
 texture = ExtResource("6_wm6g8")
 
-[node name="BlackFade" type="ColorRect" parent="."]
-z_index = 100
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
-mouse_filter = 2
-color = Color(0, 0, 0, 0)
+[node name="SceneTransition" parent="." instance=ExtResource("7_oc0jv")]
 
 [connection signal="animation_finished" from="TitleSequence" to="." method="_on_title_sequence_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

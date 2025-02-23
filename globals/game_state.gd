@@ -7,6 +7,9 @@ var bullet_damage : int = 3
 var fire_rate : int = 1
 var flashlight : int = 1
 
+var reload_combat : bool = false
+var reload_shop : bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
     pass # Replace with function body.

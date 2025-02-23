@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bxir00ch21oll"]
+[gd_scene load_steps=33 format=3 uid="uid://bxir00ch21oll"]
 
 [ext_resource type="Script" path="res://ui/shop.gd" id="1_o083l"]
 [ext_resource type="Texture2D" uid="uid://b3jxkhhr72xgn" path="res://assets/shop/shop_bg.png" id="1_xiciu"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dqh7fknkcfnkf" path="res://assets/shop/shop_medkit.png" id="9_xr72k"]
 [ext_resource type="FontFile" uid="uid://ck0koyd3diw3n" path="res://assets/baftla_font_white.png" id="13_k4xu2"]
 [ext_resource type="Texture2D" uid="uid://i6xm5gu463hg" path="res://assets/feather_sheet.png" id="13_rl36r"]
+[ext_resource type="PackedScene" uid="uid://ctgvblrwc7o3h" path="res://ui/scene_transition.tscn" id="16_dkx17"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qaqk3"]
 atlas = ExtResource("13_rl36r")
@@ -190,31 +191,6 @@ tracks/2/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_ur8qj"]
-resource_name = "shop_slide"
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("EagleShop:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("EagleShop:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -672, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 1)
-}
-
 [sub_resource type="Animation" id="Animation_mnqhs"]
 resource_name = "close_shop"
 tracks/0/type = "bezier"
@@ -259,6 +235,31 @@ tracks/3/loop_wrap = true
 tracks/3/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(-672, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_ur8qj"]
+resource_name = "shop_slide"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EagleShop:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EagleShop:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -672, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1)
 }
 
@@ -422,13 +423,14 @@ libraries = {
 "": SubResource("AnimationLibrary_0ofk4")
 }
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="SceneTransition" parent="." instance=ExtResource("16_dkx17")]
+
+[node name="BlackBG" type="ColorRect" parent="."]
 z_index = -100
 offset_right = 1152.0
 offset_bottom = 648.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
-metadata/_edit_lock_ = true
 
 [connection signal="mouse_entered" from="EagleShop/Board/Mag" to="." method="_on_mag_mouse_entered"]
 [connection signal="mouse_exited" from="EagleShop/Board/Mag" to="." method="_on_mag_mouse_exited"]

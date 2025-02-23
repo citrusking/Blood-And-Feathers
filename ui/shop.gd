@@ -25,6 +25,10 @@ var med_cost : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+    GameState.reload_combat = true
+    
+    $SceneTransition/ColorRect.color.a = 255
+    $SceneTransition/AnimationPlayer.play_backwards("fade_to_black")
     $Background.visible = false
     Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
     populate()
@@ -34,7 +38,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-    pass
+    if GameState.reload_shop:
+        GameState.reload_shop = false
+        get_tree().reload_current_scene()
 
 
 func close_shop():
@@ -205,5 +211,7 @@ func _on_medkit_pressed():
 func _on_button_pressed():
     $AnimationPlayer.play("close_shop")
     await $AnimationPlayer.animation_finished
-    await get_tree().create_timer(1).timeout
+    $SceneTransition/AnimationPlayer.play("fade_to_black")
+    await $SceneTransition/AnimationPlayer.animation_finished
+    
     get_tree().change_scene_to_packed(combat_scene)

@@ -13,6 +13,8 @@ var win = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+    GameState.reload_shop = true
+    
     # Enemies for level
     if GameState.night == 1:
         enemyArray = [budgie, budgie, budgie, chicken, pelican]
@@ -30,6 +32,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+    if GameState.reload_combat:
+        GameState.reload_combat = false
+        get_tree().reload_current_scene()
+    
     if ($LevelTimer.time_left >= 120):
         $HUD/ClockTimer/ClockFace.play("default")
         $HUD/ClockTimer/ClockFace.frame = 0
@@ -51,7 +57,6 @@ func _on_enemy_spawn_timer_timeout():
     
     var spawn_vector = Vector2(spawn_radius, 0).rotated(randf_range(0, 2 * PI))
     
-    #"""
     var nextEnemy = enemyArray[(randi() % enemyArray.size())]
     
     var current_mob_spawn = nextEnemy.instantiate()
@@ -59,7 +64,7 @@ func _on_enemy_spawn_timer_timeout():
     current_mob_spawn.velocity = $Player.position - current_mob_spawn.position
     current_mob_spawn.player_node = $Player
     add_child(current_mob_spawn)
-    #"""
+
 
 func _on_player_health_changed():
     if GameState.player_hp == 3:
@@ -74,10 +79,9 @@ func _on_player_health_changed():
         print("GAME OVER")
 
 func _on_level_timer_timeout():
-    print("TIMED OUT")
     $Player.take_damage(3)
     _on_player_health_changed()
-    pass # Replace with function body.
+    
 
 func updateNestCounter():
     eggnum -= 1
@@ -87,7 +91,3 @@ func updateNestCounter():
 func _on_hud_change_scene():
     get_tree().paused = false
     get_tree().change_scene_to_packed(shop_scene)
-
-
-func _on_hud_remove_blackness():
-    $Blackness.queue_free()

@@ -1,12 +1,12 @@
 extends Area2D
 
 @export var bullet_speed : int
-@export var bullet_damage : int = GameState.bullet_damage
+@export var bullet_damage : int
 var direction : Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    pass
+    bullet_damage = GameState.bullet_damage
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
