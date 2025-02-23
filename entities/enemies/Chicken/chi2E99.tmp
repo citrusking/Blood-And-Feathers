@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bwxibb6t4hdlo"]
+[gd_scene load_steps=14 format=3 uid="uid://bwxibb6t4hdlo"]
 
 [ext_resource type="Script" path="res://entities/enemies/Chicken/chicken.gd" id="1_0psqm"]
 [ext_resource type="PackedScene" uid="uid://dw1dwmoh8wykv" path="res://entities/other/feather/feather.tscn" id="2_phub4"]
@@ -6,9 +6,6 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ffb6l"]
 radius = 15.0
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dumv3"]
-light_mode = 2
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3crko"]
 atlas = ExtResource("3_ypp2e")
@@ -85,14 +82,13 @@ collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_0psqm")
 feather_scene = ExtResource("2_phub4")
-speed = 7500
+speed = 10000
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ffb6l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-material = SubResource("CanvasItemMaterial_dumv3")
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_3bwn7")
 animation = &"walk"
