@@ -1,15 +1,19 @@
-[gd_scene load_steps=28 format=3 uid="uid://bdmrnp3vkb5q2"]
+[gd_scene load_steps=32 format=3 uid="uid://bdmrnp3vkb5q2"]
 
 [ext_resource type="Script" path="res://entities/enemies/Pelican/pelican.gd" id="1_3c7qj"]
 [ext_resource type="PackedScene" uid="uid://bustr66pd7ub5" path="res://entities/enemies/Pelican/Fish Bullet/fish.tscn" id="2_c4srk"]
 [ext_resource type="PackedScene" uid="uid://dw1dwmoh8wykv" path="res://entities/other/feather/feather.tscn" id="2_o5wwu"]
 [ext_resource type="Texture2D" uid="uid://cdil41v8jbeb5" path="res://assets/pelican_sheet.png" id="4_f2yjp"]
+[ext_resource type="Shader" path="res://entities/enemies/enemyflash.gdshader" id="4_fvdxm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ffb6l"]
 radius = 24.1868
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dsvrx"]
-light_mode = 2
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5c4kt"]
+resource_local_to_scene = true
+shader = ExtResource("4_fvdxm")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c237u"]
 atlas = ExtResource("4_f2yjp")
@@ -169,6 +173,43 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Animation" id="Animation_oe03p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ytjfi"]
+resource_name = "white_flash"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s12x8"]
+_data = {
+"RESET": SubResource("Animation_oe03p"),
+"white_flash": SubResource("Animation_ytjfi")
+}
+
 [node name="Pelican" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 12
 collision_mask = 3
@@ -183,7 +224,7 @@ shape = SubResource("CircleShape2D_ffb6l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-material = SubResource("CanvasItemMaterial_dsvrx")
+material = SubResource("ShaderMaterial_5c4kt")
 sprite_frames = SubResource("SpriteFrames_3bwn7")
 animation = &"shoot"
 
@@ -193,6 +234,11 @@ autostart = true
 
 [node name="BulletOrigin" type="Marker2D" parent="."]
 position = Vector2(21, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_s12x8")
+}
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,14 +1,18 @@
-[gd_scene load_steps=23 format=3 uid="uid://bpoiq6agkq6a5"]
+[gd_scene load_steps=27 format=3 uid="uid://bpoiq6agkq6a5"]
 
 [ext_resource type="Script" path="res://entities/enemies/Budgie/budgie.gd" id="1_mx2u3"]
 [ext_resource type="Texture2D" uid="uid://dwdujwuxwk6ix" path="res://assets/budgie_sheet.png" id="2_jkr37"]
 [ext_resource type="PackedScene" uid="uid://dw1dwmoh8wykv" path="res://entities/other/feather/feather.tscn" id="2_q2o4o"]
+[ext_resource type="Shader" path="res://entities/enemies/enemyflash.gdshader" id="3_gxs45"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ffb6l"]
 radius = 24.1868
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vf2ry"]
-light_mode = 2
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_67avq"]
+resource_local_to_scene = true
+shader = ExtResource("3_gxs45")
+shader_parameter/flash_color = null
+shader_parameter/flash_value = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kd1ju"]
 atlas = ExtResource("2_jkr37")
@@ -135,6 +139,43 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Animation" id="Animation_oe03p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ytjfi"]
+resource_name = "white_flash"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s12x8"]
+_data = {
+"RESET": SubResource("Animation_oe03p"),
+"white_flash": SubResource("Animation_ytjfi")
+}
+
 [node name="Budgie" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 12
 collision_mask = 3
@@ -148,8 +189,13 @@ shape = SubResource("CircleShape2D_ffb6l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-material = SubResource("CanvasItemMaterial_vf2ry")
+material = SubResource("ShaderMaterial_67avq")
 sprite_frames = SubResource("SpriteFrames_3bwn7")
 animation = &"walk"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_s12x8")
+}
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

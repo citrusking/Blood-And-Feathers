@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://dq3k14ognqmkb"]
+[gd_scene load_steps=58 format=3 uid="uid://dq3k14ognqmkb"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_8tkdy"]
 [ext_resource type="PackedScene" uid="uid://dfpq6idrqlmmq" path="res://entities/other/bullet/bullet.tscn" id="2_h0jmh"]
@@ -278,57 +278,50 @@ animations = [{
 }]
 
 [sub_resource type="Gradient" id="Gradient_16i12"]
-offsets = PackedFloat32Array(0.857143, 0.993506, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.616883, 0.616883, 0.616883, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0.857143, 0.928571, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_4s7e4"]
 gradient = SubResource("Gradient_16i12")
 fill_from = Vector2(1, 0)
 fill_to = Vector2(0, 1)
 
-[sub_resource type="Gradient" id="Gradient_67ays"]
-offsets = PackedFloat32Array(0.844156, 1)
-
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_onec7"]
-gradient = SubResource("Gradient_67ays")
+gradient = SubResource("Gradient_16i12")
 fill_from = Vector2(1, 0)
 fill_to = Vector2(0, 1)
 
 [sub_resource type="Gradient" id="Gradient_4b7ja"]
-offsets = PackedFloat32Array(0.805195, 1)
+offsets = PackedFloat32Array(0.805195, 0.902597, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.52549, 0.52549, 0.52549, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_7yi5w"]
 gradient = SubResource("Gradient_4b7ja")
 fill_from = Vector2(1, 0)
 fill_to = Vector2(0, 1)
 
-[sub_resource type="Gradient" id="Gradient_pwtc3"]
-offsets = PackedFloat32Array(0.772727, 1)
-
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_52hvt"]
-gradient = SubResource("Gradient_pwtc3")
+gradient = SubResource("Gradient_4b7ja")
 fill_from = Vector2(1, 0)
 fill_to = Vector2(0, 1)
 
 [sub_resource type="Gradient" id="Gradient_63p4h"]
-offsets = PackedFloat32Array(0.668831, 1)
+offsets = PackedFloat32Array(0.668831, 0.792208, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.435192, 0.435192, 0.435192, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ojj3b"]
 gradient = SubResource("Gradient_63p4h")
 fill_from = Vector2(1, 0)
 fill_to = Vector2(0, 1)
 
-[sub_resource type="Gradient" id="Gradient_mqksh"]
-offsets = PackedFloat32Array(0.74026, 1)
-
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_y2gfe"]
-gradient = SubResource("Gradient_mqksh")
+gradient = SubResource("Gradient_63p4h")
 fill_from = Vector2(1, 0)
 fill_to = Vector2(0, 1)
 
 [sub_resource type="Gradient" id="Gradient_eni1j"]
-offsets = PackedFloat32Array(0, 0.292208, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.571429, 0.571429, 0.571429, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0, 0.662338, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.571429, 0.571429, 0.571429, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_qwaw5"]
 gradient = SubResource("Gradient_eni1j")
@@ -337,7 +330,7 @@ fill_from = Vector2(0.495413, 0.495413)
 fill_to = Vector2(0.770642, 0.247706)
 
 [sub_resource type="Gradient" id="Gradient_qbt5r"]
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ix2fp"]
 gradient = SubResource("Gradient_qbt5r")
@@ -471,6 +464,7 @@ animation = &"walk"
 position = Vector2(31, 8)
 
 [node name="Flashlight_1" type="PointLight2D" parent="."]
+visible = false
 position = Vector2(16, 0)
 rotation = 0.349066
 scale = Vector2(10, 10)
@@ -508,7 +502,6 @@ texture = SubResource("GradientTexture2D_52hvt")
 offset = Vector2(32, -32)
 
 [node name="Flashlight_3" type="PointLight2D" parent="."]
-visible = false
 position = Vector2(16, 0)
 rotation = 0.872665
 scale = Vector2(10, 10)
@@ -526,10 +519,11 @@ color = Color(0.890196, 0.717647, 0.372549, 1)
 texture = SubResource("GradientTexture2D_y2gfe")
 offset = Vector2(32, -32)
 
-[node name="BodyLight" type="PointLight2D" parent="."]
+[node name="BodyLight_3" type="PointLight2D" parent="."]
+position = Vector2(0, -2.38419e-07)
 color = Color(0.85098, 0.745098, 0.435294, 1)
 texture = SubResource("GradientTexture2D_qwaw5")
-texture_scale = 2.0
+texture_scale = 4.0
 
 [node name="MuzzleFlash" type="PointLight2D" parent="."]
 position = Vector2(31, 8)
