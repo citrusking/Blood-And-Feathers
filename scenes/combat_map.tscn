@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bpoiq6agkq6a5" path="res://entities/enemies/Budgie/budgie.tscn" id="2_it0dj"]
 [ext_resource type="TileSet" uid="uid://c0psnb18ve0ek" path="res://scenes/tileset.tres" id="4_3fyep"]
 [ext_resource type="PackedScene" uid="uid://bdmrnp3vkb5q2" path="res://entities/enemies/Pelican/pelican.tscn" id="4_706k7"]
-[ext_resource type="PackedScene" uid="uid://l2bi7ue4fgk4" path="res://ui/hud.tscn" id="5_b8273"]
 [ext_resource type="TileSet" uid="uid://bsodsuircv4ni" path="res://scenes/MapEdgeTileset.tres" id="7_h2o4o"]
+[ext_resource type="PackedScene" uid="uid://bd4d8bcc0ykww" path="res://ui/hud.tscn" id="8_5xkiu"]
 [ext_resource type="PackedScene" uid="uid://bvxgqs8wle4p" path="res://entities/other/egg/egg.tscn" id="8_7pn8v"]
 
 [node name="CombatMap" type="Node2D"]
@@ -38,7 +38,7 @@ metadata/_edit_lock_ = true
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 autostart = true
 
-[node name="HUD" parent="." instance=ExtResource("5_b8273")]
+[node name="HUD" parent="." instance=ExtResource("8_5xkiu")]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.262928, 0.262934, 0.262932, 1)

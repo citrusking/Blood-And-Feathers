@@ -4,12 +4,8 @@ extends Node2D
 @export var chicken : PackedScene
 @export var pelican : PackedScene
 @export var egg : PackedScene
-<<<<<<< Updated upstream
-
-
-=======
 @onready var battleTrack = preload("res://assets/sounds/Beasuce - Half Past Apocalypse.mp3")
->>>>>>> Stashed changes
+
 var enemyArray
 var eggnum : int
 var win = false
@@ -17,14 +13,11 @@ var enemyHpMult : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-<<<<<<< Updated upstream
     GameState.reload_shop = true
     
-=======
     $Music.stream = battleTrack
     $Music.pitch_scale = 1
-    $Music.play()
->>>>>>> Stashed changes
+    #$Music.play()
     # Enemies for level
     match GameState.night:
         1:
@@ -149,11 +142,8 @@ func _on_player_health_changed():
         print("GAME OVER")
 
 func _on_level_timer_timeout():
-<<<<<<< Updated upstream
-=======
     $HUD.timeoutToggle = true
-    print("TIMED OUT")
->>>>>>> Stashed changes
+    
     $Player.take_damage(3)
     _on_player_health_changed()
     

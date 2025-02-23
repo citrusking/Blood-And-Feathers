@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=127 format=3 uid="uid://l2bi7ue4fgk4"]
-=======
-[gd_scene load_steps=122 format=3 uid="uid://l2bi7ue4fgk4"]
->>>>>>> Stashed changes
+[gd_scene load_steps=128 format=3 uid="uid://bd4d8bcc0ykww"]
 
 [ext_resource type="Texture2D" uid="uid://b48niy8g0p7fy" path="res://assets/health_ui_sheet.png" id="1_05uuv"]
 [ext_resource type="Script" path="res://ui/hud.gd" id="1_chu5o"]
@@ -15,12 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://b6t77s0skskbk" path="res://assets/tutorial_sprite.png" id="9_qvtbj"]
 [ext_resource type="Texture2D" uid="uid://bucm4ob6wviio" path="res://assets/GameOver.png" id="10_gamnh"]
 [ext_resource type="Texture2D" uid="uid://cms5g7n7jcm0x" path="res://assets/cursor_hand_sheet.png" id="10_xpf5o"]
-<<<<<<< Updated upstream
+[ext_resource type="Texture2D" uid="uid://cuvp5cw6tef5j" path="res://assets/timeout.png" id="11_li005"]
 [ext_resource type="Texture2D" uid="uid://ctuj6stlhs5ar" path="res://assets/sunrise_splash.png" id="12_r4i6g"]
 [ext_resource type="PackedScene" uid="uid://ctgvblrwc7o3h" path="res://ui/scene_transition.tscn" id="13_q5wup"]
-=======
-[ext_resource type="Texture2D" uid="uid://cuvp5cw6tef5j" path="res://assets/timeout.png" id="11_li005"]
->>>>>>> Stashed changes
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dtl72"]
 atlas = ExtResource("2_y8ryr")

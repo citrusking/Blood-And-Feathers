@@ -2,6 +2,7 @@ extends Control
 
 var accept_input = false
 var key_pressed = false
+var playPressed = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,12 +31,16 @@ func _on_title_sequence_animation_finished():
 
 
 func _on_play_button_pressed():
-    $SceneTransition/AnimationPlayer.play("fade_to_black")
-    await $SceneTransition/AnimationPlayer.animation_finished
-    get_tree().change_scene_to_file("res://scenes/combat_map.tscn")
+    if !playPressed:
+        playPressed = true
+        $SceneTransition/AnimationPlayer.play("fade_to_black")
+        await $SceneTransition/AnimationPlayer.animation_finished
+        get_tree().change_scene_to_file("res://scenes/combat_map.tscn")
 
 
 func _on_quit_button_pressed():
-    $SceneTransition/AnimationPlayer.play("fade_to_black")
-    await $SceneTransition/AnimationPlayer.animation_finished
-    get_tree().quit()
+    if !playPressed:
+        playPressed = true
+        $SceneTransition/AnimationPlayer.play("fade_to_black")
+        await $SceneTransition/AnimationPlayer.animation_finished
+        get_tree().quit()
