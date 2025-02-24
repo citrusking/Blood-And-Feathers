@@ -21,6 +21,19 @@ var can_shoot : bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+    match GameState.flashlight:
+        1:
+            $Flashlight_1.visible = true
+            $Flashlight_2.visible = false
+            $Flashlight_3.visible = false
+        2:
+            $Flashlight_1.visible = false
+            $Flashlight_2.visible = true
+            $Flashlight_3.visible = false
+        3:
+            $Flashlight_1.visible = false
+            $Flashlight_2.visible = false
+            $Flashlight_3.visible = true
     pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

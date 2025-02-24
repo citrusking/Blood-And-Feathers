@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bencvnb1m67e2"
+path="res://.godot/imported/Night Driver - Jasper Byrne.mp3-8b8f3d776922b73fcd921b8284cb564e.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Night Driver - Jasper Byrne.mp3"
+dest_files=["res://.godot/imported/Night Driver - Jasper Byrne.mp3-8b8f3d776922b73fcd921b8284cb564e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

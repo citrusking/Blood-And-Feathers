@@ -17,7 +17,7 @@ func _ready():
     
     $Music.stream = battleTrack
     $Music.pitch_scale = 1
-    #$Music.play()
+    $Music.play()
     # Enemies for level
     match GameState.night:
         1:
@@ -89,13 +89,8 @@ func _ready():
     var playerspawns = $PlayerMarkers.get_children()
     $Player.position = playerspawns[randi() % playerspawns.size()].position
     pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-    if GameState.reload_combat:
-        GameState.reload_combat = false
-        get_tree().reload_current_scene()
     
+func _process(delta):
     if ($LevelTimer.time_left >= 120):
         $HUD/ClockTimer/ClockFace.play("default")
         $HUD/ClockTimer/ClockFace.frame = 0
@@ -108,6 +103,7 @@ func _process(delta):
             if !i.dead:
                 win = false
         if win:
+            print("hi")
             $HUD.win_combat()
             
 

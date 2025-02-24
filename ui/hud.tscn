@@ -1,4 +1,4 @@
-[gd_scene load_steps=128 format=3 uid="uid://bd4d8bcc0ykww"]
+[gd_scene load_steps=129 format=3 uid="uid://bd4d8bcc0ykww"]
 
 [ext_resource type="Texture2D" uid="uid://b48niy8g0p7fy" path="res://assets/health_ui_sheet.png" id="1_05uuv"]
 [ext_resource type="Script" path="res://ui/hud.gd" id="1_chu5o"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cms5g7n7jcm0x" path="res://assets/cursor_hand_sheet.png" id="10_xpf5o"]
 [ext_resource type="Texture2D" uid="uid://cuvp5cw6tef5j" path="res://assets/timeout.png" id="11_li005"]
 [ext_resource type="Texture2D" uid="uid://ctuj6stlhs5ar" path="res://assets/sunrise_splash.png" id="12_r4i6g"]
+[ext_resource type="Texture2D" uid="uid://rjpvc6boxetq" path="res://assets/image.png" id="12_x7jtw"]
 [ext_resource type="PackedScene" uid="uid://ctgvblrwc7o3h" path="res://ui/scene_transition.tscn" id="13_q5wup"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dtl72"]
@@ -1059,6 +1060,14 @@ libraries = {
 "": SubResource("AnimationLibrary_vpp4k")
 }
 
+[node name="Button" type="Button" parent="GameOverScreen"]
+offset_left = -85.8333
+offset_top = 57.0833
+offset_right = 81.1667
+offset_bottom = 129.083
+icon = ExtResource("12_x7jtw")
+flat = true
+
 [node name="CursorTracker2" type="Node2D" parent="."]
 process_mode = 1
 scale = Vector2(2.4, 2.4)
@@ -1084,3 +1093,4 @@ libraries = {
 
 [connection signal="animation_finished" from="HealthIndicator" to="." method="_on_health_indicator_animation_finished"]
 [connection signal="button_down" from="PauseScreen/Button" to="." method="_on_button_button_down"]
+[connection signal="pressed" from="GameOverScreen/Button" to="." method="_on_button_pressed"]

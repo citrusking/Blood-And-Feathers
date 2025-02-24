@@ -70,10 +70,11 @@ func _on_area_2d_body_entered(body):
             body.take_damage(1)
 
 func hurtAudio():
-    if hp > 0:
-        $SFX/HurtSFX.stream = hit
-        $SFX/HurtSFX.pitch_scale = randf_range(.85, 1.15)
-        $SFX/HurtSFX.play()
+    if !is_dying:
+        if hp > 0:
+            $SFX/HurtSFX.stream = hit
+            $SFX/HurtSFX.pitch_scale = randf_range(.85, 1.15)
+            $SFX/HurtSFX.play()
 
 func _on_hurt_sfx_finished() -> void:
     if $SFX/HurtSFX.stream == death:

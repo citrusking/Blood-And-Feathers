@@ -1,5 +1,7 @@
 extends Control
 
+@onready var menuTrack = preload("res://assets/sounds/Beasuce - Acid Dance.mp3")
+
 var accept_input = false
 var key_pressed = false
 var playPressed = false
@@ -8,7 +10,10 @@ var playPressed = false
 func _ready():
     $SceneTransition/ColorRect.color.a = 0
     $Cut.visible = false
-
+    
+    $Music.stream = menuTrack
+    $Music.pitch_scale = 1
+    $Music.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

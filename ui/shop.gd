@@ -11,6 +11,8 @@ signal shop_closing
 @export var medkit : Texture2D
 @export var out : Texture2D
 
+@onready var shopTrack = preload("res://assets/sounds/Night Driver - Jasper Byrne.mp3")
+
 var mag_msg : String
 var bul_msg : String
 var len_msg : String
@@ -32,6 +34,10 @@ func _ready():
     populate()
     await get_tree().create_timer(1).timeout
     $AnimationPlayer.play("background_slide")
+    
+    $Music.stream = shopTrack
+    $Music.pitch_scale = 1
+    $Music.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -207,6 +213,8 @@ func _on_medkit_pressed():
 
 
 func _on_button_pressed():
+    print('lol')
+    GameState.night = GameState.night + 1
     $AnimationPlayer.play("close_shop")
     await $AnimationPlayer.animation_finished
     $SceneTransition/AnimationPlayer.play("fade_to_black")

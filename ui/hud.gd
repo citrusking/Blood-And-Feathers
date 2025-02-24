@@ -101,6 +101,7 @@ func gameOver():
         gameOverToggle = true
 
 func win_combat():
+    print("hi")
     get_tree().paused = true
     $AnimationPlayer.play("fade_sunrise")
     await $AnimationPlayer.animation_finished

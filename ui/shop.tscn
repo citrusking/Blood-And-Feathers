@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bxir00ch21oll"]
+[gd_scene load_steps=33 format=3 uid="uid://bxir00ch21oll"]
 
 [ext_resource type="Script" path="res://ui/shop.gd" id="1_o083l"]
 [ext_resource type="Texture2D" uid="uid://b3jxkhhr72xgn" path="res://assets/shop/shop_bg.png" id="1_xiciu"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dqh7fknkcfnkf" path="res://assets/shop/shop_medkit.png" id="9_xr72k"]
 [ext_resource type="FontFile" uid="uid://ck0koyd3diw3n" path="res://assets/baftla_font_white.png" id="13_k4xu2"]
 [ext_resource type="Texture2D" uid="uid://i6xm5gu463hg" path="res://assets/feather_sheet.png" id="13_rl36r"]
+[ext_resource type="Texture2D" uid="uid://rjpvc6boxetq" path="res://assets/image.png" id="15_8yocp"]
 [ext_resource type="PackedScene" uid="uid://ctgvblrwc7o3h" path="res://ui/scene_transition.tscn" id="16_dkx17"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qaqk3"]
@@ -410,11 +411,18 @@ theme_override_font_sizes/font_size = 40
 vertical_alignment = 1
 
 [node name="Button" type="Button" parent="EagleShop"]
-offset_left = 263.0
-offset_top = 727.0
-offset_right = 379.0
-offset_bottom = 792.0
-text = "continue"
+offset_left = 233.0
+offset_top = 689.0
+offset_right = 400.0
+offset_bottom = 761.0
+icon = ExtResource("15_8yocp")
+flat = true
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(557, 362)
+volume_db = -15.0
+max_distance = 100000.0
+attenuation = 0.0272047
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
