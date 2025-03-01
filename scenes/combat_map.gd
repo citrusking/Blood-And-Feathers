@@ -18,7 +18,13 @@ func _ready():
     $Music.stream = battleTrack
     $Music.pitch_scale = 1
     $Music.play()
-    # Enemies for level
+    
+    set_difficulty()
+    spawn_eggs()
+    spawn_player()
+
+
+func set_difficulty():
     match GameState.night:
         1:
             enemyArray = [budgie]
@@ -76,7 +82,8 @@ func _ready():
             eggnum = 5
             $EnemySpawnTimer.wait_time = .5
     
-    # Eggs for level
+    
+func spawn_eggs():
     var eggspawns = $EggMarkers.get_children()
     for i in eggnum:
         var eggspawnPositionMarker = eggspawns.pop_at(randi() % eggspawns.size())
@@ -86,9 +93,11 @@ func _ready():
         $EggTasks.add_child(current_eggspawn)
     $HUD/GoalCounters.text = "NIGHT " + str(GameState.night) + "\nNESTS " + str(eggnum)
     
+    
+func spawn_player():
     var playerspawns = $PlayerMarkers.get_children()
     $Player.position = playerspawns[randi() % playerspawns.size()].position
-    pass # Replace with function body.
+    
     
 func _process(delta):
     if ($LevelTimer.time_left >= 120):
@@ -103,7 +112,6 @@ func _process(delta):
             if !i.dead:
                 win = false
         if win:
-            print("hi")
             $HUD.win_combat()
             
 
@@ -135,7 +143,7 @@ func _on_player_health_changed():
     elif GameState.player_hp <= 0:
         $HUD/HealthIndicator.play("0hp")
         $HUD.gameOver()
-        print("GAME OVER")
+        
 
 func _on_level_timer_timeout():
     $HUD.timeoutToggle = true

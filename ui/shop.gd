@@ -176,7 +176,6 @@ func _on_mag_pressed():
         %Description.text = mag_msg
     else:
         %Description.text = "low feathers!"
-    print(GameState.fire_rate)
 
 
 func _on_bullet_pressed():
@@ -187,7 +186,6 @@ func _on_bullet_pressed():
         %Description.text = bul_msg
     else:
         %Description.text = "low feathers!"
-    print(GameState.bullet_damage)
 
 
 func _on_lens_pressed():
@@ -198,7 +196,6 @@ func _on_lens_pressed():
         %Description.text = len_msg
     else:
         %Description.text = "low feathers!"
-    print(GameState.flashlight)
 
 
 func _on_medkit_pressed():
@@ -209,11 +206,9 @@ func _on_medkit_pressed():
         %Description.text = med_msg
     else:
         %Description.text = "low feathers!"
-    print(GameState.player_hp)
 
 
 func _on_button_pressed():
-    print('lol')
     GameState.night = GameState.night + 1
     $AnimationPlayer.play("close_shop")
     await $AnimationPlayer.animation_finished

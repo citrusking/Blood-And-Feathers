@@ -19,8 +19,13 @@ var is_dying : bool = false
 var is_dead : bool = false
 var can_shoot : bool = true
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+    initialize()
+    
+    
+func initialize():
     match GameState.flashlight:
         1:
             $Flashlight_1.visible = true
@@ -34,7 +39,7 @@ func _ready():
             $Flashlight_1.visible = false
             $Flashlight_2.visible = false
             $Flashlight_3.visible = true
-    pass
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -46,6 +51,7 @@ func _physics_process(delta):
         move_and_slide()
     animate()
 
+
 func move(delta):
     input_vector = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
     velocity = input_vector.normalized() * speed * delta
@@ -54,6 +60,7 @@ func move(delta):
         is_moving = true
     else:
         is_moving = false
+        
         
 func shoot():
     is_shooting = true
@@ -73,22 +80,27 @@ func shoot():
         if (Input.is_action_pressed("shoot") and can_shoot):
             shoot()
 
+
 func take_damage(damage : int):
     GameState.player_hp = GameState.player_hp - damage
     health_changed.emit()
-    if (GameState.player_hp <= 0):
-        if !is_dying:
-            die()
-    elif (GameState.player_hp <= 1):
-        $SFX/HurtSFX.stream = hit
-        $SFX/HurtSFX.pitch_scale = 1
-        $SFX/HurtSFX.play()
-    elif (GameState.player_hp <= 2):
-        $SFX/HurtSFX.stream = hit
-        $SFX/HurtSFX.pitch_scale = 1
-        $SFX/HurtSFX.play()
-    else:
+    
+    match GameState.player_hp:
+        2:
+            $SFX/HurtSFX.stream = hit
+            $SFX/HurtSFX.pitch_scale = 1
+            $SFX/HurtSFX.play()
+        1:
+            $SFX/HurtSFX.stream = hit
+            $SFX/HurtSFX.pitch_scale = 1
+            $SFX/HurtSFX.play()
+        0:
+            if !is_dying:
+                die()
+
+    if GameState.player_hp > 0:
         is_hurt = true
+
 
 func die():
     if !is_dying:
@@ -98,9 +110,11 @@ func die():
             $SFX/HurtSFX.play()
     is_dying = true
 
+
 func _on_area_2d_body_entered(body):
     if body.is_in_group("enemies"):
         take_damage(1)
+
 
 func animate():
     if is_dead:
@@ -122,6 +136,7 @@ func animate():
     else:
         $AnimatedSpriteBottom.look_at(get_global_mouse_position())
         $AnimatedSpriteBottom.stop()
+
 
 func _on_animation_finished():
     match $AnimatedSpriteTop.animation:

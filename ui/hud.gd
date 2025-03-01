@@ -9,6 +9,7 @@ var startTutorial : bool = true
 var gameOverToggle : bool = false
 var timeoutToggle : bool = false
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
     $SceneTransition/ColorRect.color = 255
@@ -21,13 +22,21 @@ func _ready():
     $GameOverScreen/TimeoutSprite.visible = false
     
     Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-    $HealthIndicator.play("3hp")
+    match GameState.player_hp:
+        3:
+            $HealthIndicator.play("3hp")
+        2:
+            $HealthIndicator.play("2hp")
+        1:
+            $HealthIndicator.play("1hp")
     $ClockTimer.play("default")
     $Feathers.play("default")
+    $Feathers/FeatherCounter.text = str(GameState.feathers)
     $CursorTracker/Cursor.play("default")
     $GameOverScreen.visible = false
     
     get_tree().paused = true
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -86,10 +95,12 @@ func _on_health_indicator_animation_finished():
     if $HealthIndicator.animation == "0hp":
         $HealthIndicator.visible = false
 
+
 func _on_button_button_down() -> void:
     get_tree().paused = false
     $PauseScreen.visible = false
     pass # Replace with function body.
+
 
 func gameOver():
     if !gameOverToggle:
@@ -99,6 +110,7 @@ func gameOver():
             $GameOverScreen/TimeoutSprite.visible = true
         $GameOverScreen/AnimationPlayer.play("GameOver")
         gameOverToggle = true
+
 
 func win_combat():
     print("hi")
