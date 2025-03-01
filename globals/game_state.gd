@@ -1,7 +1,7 @@
 extends Node
 
 var player_hp : int = 3
-var feathers : int = 100
+var feathers : int = 0
 var night : int = 1 # this is the level, or wave, or whatever
 var bullet_damage : int = 1
 var fire_rate : int = 1
