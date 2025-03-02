@@ -118,7 +118,7 @@ func _on_area_2d_body_entered(body):
 
 func animate():
     if is_dead:
-        $AnimatedSpriteTop.pause
+        $AnimatedSpriteTop.pause()
     elif is_dying:
         $AnimatedSpriteTop.play("die")
         $AnimatedSpriteBottom.visible = false

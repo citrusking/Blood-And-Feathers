@@ -1,7 +1,7 @@
 [gd_scene load_steps=27 format=3 uid="uid://bpoiq6agkq6a5"]
 
 [ext_resource type="Script" path="res://entities/enemies/Budgie/budgie.gd" id="1_mx2u3"]
-[ext_resource type="Texture2D" uid="uid://dwdujwuxwk6ix" path="res://assets/budgie_sheet.png" id="2_jkr37"]
+[ext_resource type="Texture2D" uid="uid://dwdujwuxwk6ix" path="res://assets/sprites/budgie_sheet.png" id="2_jkr37"]
 [ext_resource type="PackedScene" uid="uid://dw1dwmoh8wykv" path="res://entities/other/feather/feather.tscn" id="2_q2o4o"]
 [ext_resource type="Shader" path="res://entities/enemies/enemyflash.gdshader" id="3_gxs45"]
 

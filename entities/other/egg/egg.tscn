@@ -1,7 +1,7 @@
 [gd_scene load_steps=34 format=3 uid="uid://bvxgqs8wle4p"]
 
 [ext_resource type="Script" path="res://entities/other/egg/egg.gd" id="1_6iemn"]
-[ext_resource type="Texture2D" uid="uid://04ao86gop2pk" path="res://assets/egg_sheet.png" id="1_7rmde"]
+[ext_resource type="Texture2D" uid="uid://04ao86gop2pk" path="res://assets/sprites/egg_sheet.png" id="1_7rmde"]
 [ext_resource type="Shader" path="res://entities/other/egg/eggflash.gdshader" id="2_lc88c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3s3mf"]

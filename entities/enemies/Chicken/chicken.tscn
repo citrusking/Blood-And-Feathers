@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://entities/enemies/Chicken/chicken.gd" id="1_0psqm"]
 [ext_resource type="PackedScene" uid="uid://dw1dwmoh8wykv" path="res://entities/other/feather/feather.tscn" id="2_phub4"]
 [ext_resource type="Shader" path="res://entities/enemies/enemyflash.gdshader" id="3_umngk"]
-[ext_resource type="Texture2D" uid="uid://cb8rr03iudmrp" path="res://assets/chicken_sheet.png" id="3_ypp2e"]
+[ext_resource type="Texture2D" uid="uid://cb8rr03iudmrp" path="res://assets/sprites/chicken_sheet.png" id="3_ypp2e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ffb6l"]
 radius = 15.0

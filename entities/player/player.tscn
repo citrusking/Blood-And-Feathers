@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_8tkdy"]
 [ext_resource type="PackedScene" uid="uid://dfpq6idrqlmmq" path="res://entities/other/bullet/bullet.tscn" id="2_h0jmh"]
-[ext_resource type="Texture2D" uid="uid://cjcfjr5bu46hb" path="res://assets/player_sheet.png" id="3_htgj7"]
+[ext_resource type="Texture2D" uid="uid://cjcfjr5bu46hb" path="res://assets/sprites/player_sheet.png" id="3_htgj7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cgvqh"]
 radius = 17.0294

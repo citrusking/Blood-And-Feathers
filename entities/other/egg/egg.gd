@@ -19,8 +19,9 @@ func _ready() -> void:
     $AnimatedSprite2D.play("full")
     pass # Replace with function body.
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta) -> void:
     if hp / max_hp <= 2.0/3.0 && brokenTriggers[0] == 0:
         $AnimatedSprite2D.play("break_full")
         brokenTriggers[0] = 1
@@ -41,7 +42,7 @@ func _process(delta: float) -> void:
         $SFX/EggSFX.play()
         dead = true
         deadEgg.emit()
-    pass
+        
 
 func _on_animated_sprite_2d_animation_finished():
     if $AnimatedSprite2D.animation == "break_full":
@@ -50,6 +51,7 @@ func _on_animated_sprite_2d_animation_finished():
         $AnimatedSprite2D.play("low")
     if $AnimatedSprite2D.animation == "kill":
         $AnimatedSprite2D.play("dead")
+
 
 func hurtAudio():
     if hp > 0:

@@ -40,9 +40,10 @@ func die(feather_drop : bool):
     set_collision_layer_value(3, false)
     set_collision_layer_value(4, false)
     remove_from_group("enemies") # this is so that the bullet will go through it while dying
-    var feather_spawn = feather_scene.instantiate()
-    feather_spawn.global_position = global_position
-    get_tree().current_scene.add_child(feather_spawn)
+    if feather_drop:
+        var feather_spawn = feather_scene.instantiate()
+        feather_spawn.global_position = global_position
+        get_tree().current_scene.add_child(feather_spawn)
 
 func _on_animated_sprite_2d_animation_finished():
     if $AnimatedSprite2D.animation == "die":

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bustr66pd7ub5"]
 
 [ext_resource type="Script" path="res://entities/enemies/Pelican/Fish Bullet/fish.gd" id="1_nethe"]
-[ext_resource type="Texture2D" uid="uid://cdil41v8jbeb5" path="res://assets/pelican_sheet.png" id="2_yq5cn"]
+[ext_resource type="Texture2D" uid="uid://cgk7ev8ilounb" path="res://assets/sprites/pelican_sheet.png" id="2_avrkb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tu08a"]
 size = Vector2(12, 5)
@@ -30,7 +30,7 @@ autostart = true
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_d1rxa")
-texture = ExtResource("2_yq5cn")
+texture = ExtResource("2_avrkb")
 region_enabled = true
 region_rect = Rect2(0, 192, 64, 64)
 

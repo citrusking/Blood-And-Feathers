@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://dw1dwmoh8wykv"]
 
-[ext_resource type="Texture2D" uid="uid://i6xm5gu463hg" path="res://assets/feather_sheet.png" id="1_fea4d"]
+[ext_resource type="Texture2D" uid="uid://i6xm5gu463hg" path="res://assets/sprites/feather_sheet.png" id="1_fea4d"]
 [ext_resource type="Script" path="res://entities/other/feather/feather.gd" id="2_dqych"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uc2fw"]

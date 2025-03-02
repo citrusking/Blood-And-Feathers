@@ -1,0 +1,88 @@
+[gd_scene load_steps=6 format=3 uid="uid://dm7mingx0wlik"]
+
+[ext_resource type="Script" path="res://scenes/main_menu/main_menu.gd" id="1_0au8i"]
+[ext_resource type="FontFile" uid="uid://ck0koyd3diw3n" path="res://assets/baftla_font_white.png" id="3_pjwut"]
+[ext_resource type="Texture2D" uid="uid://n5h0qm22gbey" path="res://assets/sprites/button_normal.png" id="4_7pfn7"]
+[ext_resource type="Texture2D" uid="uid://b8b6xsjt3n1tf" path="res://assets/sprites/button_pressed.png" id="5_03r4r"]
+[ext_resource type="Texture2D" uid="uid://bwd6m2oqixkac" path="res://assets/fullscreen_art/main_menu_splash.png" id="6_wm6g8"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_0au8i")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+z_index = -5
+layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="PlayButton" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+texture_normal = ExtResource("4_7pfn7")
+texture_pressed = ExtResource("5_03r4r")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PlayButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -38.5
+offset_right = 130.0
+offset_bottom = 26.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_pjwut")
+theme_override_font_sizes/font_size = 65
+text = "play"
+
+[node name="QuitButton" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+texture_normal = ExtResource("4_7pfn7")
+texture_pressed = ExtResource("5_03r4r")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/QuitButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -38.5
+offset_right = 130.0
+offset_bottom = 26.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_pjwut")
+theme_override_font_sizes/font_size = 65
+text = "quit game"
+
+[node name="MenuBG" type="Sprite2D" parent="MarginContainer"]
+z_index = -1
+position = Vector2(576, 324)
+scale = Vector2(2.4, 2.4)
+texture = ExtResource("6_wm6g8")
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(557, 362)
+volume_db = -15.0
+max_distance = 100000.0
+attenuation = 0.0272047
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
