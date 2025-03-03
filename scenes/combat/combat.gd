@@ -13,8 +13,6 @@ var enemyHpMult : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    GameState.reload_shop = true
-    
     $Music.stream = battleTrack
     $Music.pitch_scale = 1
     $Music.play()
